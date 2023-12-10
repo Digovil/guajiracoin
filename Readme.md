@@ -1,6 +1,6 @@
 # MicroBlockchain: Blockchain en Miniatura con ESP8266
 
-[![MicroBlockchain](./Resources/microblockchain.jpg)](https://github.com/Digovil/microblockchain)
+[![MicroBlockchain](./Resources/microblockchain.png)](https://github.com/Digovil/microblockchain)
 
 MicroBlockchain es un proyecto educativo que simula una blockchain basada en los principios fundamentales de Bitcoin, pero a una escala mucho menor. Este proyecto permite a los microcontroladores ESP8266 resolver la prueba de trabajo, ofreciendo una experiencia práctica y didáctica sobre el funcionamiento de la tecnología blockchain.
 
