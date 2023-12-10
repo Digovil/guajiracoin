@@ -1,4 +1,5 @@
-# MicroBlockchain: Blockchain en Miniatura con ESP8266
+# PRODUCCIÓN DE UNA BLOCKCHAIN DE BITCOIN CON MICROCONTROLADORES ESP8266 A MENOR ESCALA (MicroBlockchain)
+
 
 [![MicroBlockchain](./Resources/microblockchain.png)](https://github.com/Digovil/microblockchain)
 
