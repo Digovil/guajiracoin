@@ -1,6 +1,9 @@
 import subprocess
+import socket
+import threading
 import platform
 import sys
+
 
 def open_firewall_port(port=8333):
     os_type = platform.system()
@@ -25,21 +28,52 @@ def open_firewall_port(port=8333):
         print(f"Error al abrir el puerto {port} en {os_type}: {e}")
         sys.exit(1)
 
-def check_connection(ip, port=8333):
-    try:
-        # Intenta conectar usando nc o telnet dependiendo del sistema operativo
-        if platform.system() == "Windows":
-            subprocess.run(["telnet", ip, str(port)], check=True)
-        else:
-            subprocess.run(["nc", "-zv", ip, str(port)], check=True)
+# Abrir el puerto 8333 en el firewall
+# open_firewall_port()
 
-        print(f"Conexión exitosa a {ip} en el puerto {port}")
-    except subprocess.CalledProcessError as e:
-        print(f"Fallo al conectar a {ip} en el puerto {port}: {e}")
+# Función para manejar conexiones entrantes
+def handle_connection(conn, addr):
+    print(f"Conexión entrante de {addr}")
+    while True:
+        data = conn.recv(1024)
+        if not data:
+            break
+        print(f"Mensaje de {addr}: {data.decode()}")
+    conn.close()
+
+# Función para iniciar el servidor
+def start_server(port):
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('0.0.0.0', port))
+    server_socket.listen(5)
+    print(f"Escuchando en el puerto {port}...")
+
+    while True:
+        conn, addr = server_socket.accept()
+        client_thread = threading.Thread(target=handle_connection, args=(conn, addr))
+        client_thread.start()
+
+# Función para enviar mensajes a otros nodos
+def send_message(ip, port, message):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((ip, port))
+        s.sendall(message.encode())
+        print("Mensaje enviado.")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Uso: script.py [local_port] [remote_ip:remote_port] [message]")
         sys.exit(1)
 
-# Abrir el puerto 8333 en el firewall
-open_firewall_port()
+    local_port = int(sys.argv[1])
+    remote_info = sys.argv[2].split(":")
+    remote_ip = remote_info[0]
+    remote_port = int(remote_info[1])
+    message = sys.argv[3]
 
-# Reemplaza 'x.x.x.x' con la IP del objetivo
-# check_connection("x.x.x.x")
+    # Iniciar el servidor en un hilo separado
+    server_thread = threading.Thread(target=start_server, args=(local_port,))
+    server_thread.start()
+
+    # Enviar mensaje al nodo remoto
+    send_message(remote_ip, remote_port, message)
