@@ -45,30 +45,8 @@ class Blockchain:
             'amount': amount,
         })
         # Añade el cálculo de la dificultad basada en la información recopilada
-        difficulty = self.calculate_dynamic_difficulty()
-        if difficulty is None:
-            difficulty = 4
-        return self.last_block['index'] + 1, difficulty
+        return self.last_block['index'] + 1
     
-        # En el objeto Blockchain
-    def calculate_dynamic_difficulty(self):
-        # Calcula la dificultad dinámica basada en la información recopilada
-        # (Ejemplo: hacer que la dificultad sea inversamente proporcional a la velocidad promedio de minería)
-        average_mining_speed = self.calculate_average_mining_speed()  # Implementa esta función
-        if average_mining_speed == 0:
-            return
-        dynamic_difficulty = max(1, int(1000 / average_mining_speed))  # Ajusta según tus criterios
-        return dynamic_difficulty
-
-    def calculate_average_mining_speed(self):
-        # Implementa la lógica para calcular la velocidad promedio de minería
-        # Puedes usar la información recopilada de los mineros y calcular el promedio.
-        # Devuelve la velocidad promedio de minería.
-        # Ejemplo: suma de pruebas de trabajo por unidad de tiempo dividido por el número de mineros.
-        total_mining_speed = sum(miner['mining_speed'] for miner in self.miners)  # Ajusta según tu estructura de datos
-        average_mining_speed = total_mining_speed / max(1, len(self.miners))  # Evitar división por cero
-        return average_mining_speed
-
     @property
     def last_block(self):
         return self.chain[-1]
@@ -87,7 +65,7 @@ class Blockchain:
             
     def register_node_sender(self, address):
         parsed_url = urlparse(address)
-        self.nodes.add(f"http://{parsed_url.scheme}:{parsed_url.path}")
+        self.nodes.add(f"https://{parsed_url.scheme}:{parsed_url.path}")
 
 
     def valid_chain(self, chain):
@@ -180,7 +158,8 @@ CORS(app, origins='*')
 node_identifier = str(uuid4()).replace('-', '')
 
 # Instantiate the Blockchain
-blockchain = Blockchain('192.168.20.36', '5000')
+blockchain = Blockchain("nodo1-waycoin.onrender.com", 443)
+blockchain.nodes.add(f"https://nodo2-waycoin.onrender.com:443")
 
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
@@ -294,16 +273,4 @@ def update_chain():
 
 
 if __name__ == '__main__':
-    from argparse import ArgumentParser
-
-    parser = ArgumentParser()
-    parser.add_argument('-p', '--port', default=5000, type=int, help='puerto para escuchar')
-    parser.add_argument('--connect', nargs='+', help='direcciones de nodos a los que conectarse (e.g., --connect http://node1:5000 http://node2:5001)')
-    args = parser.parse_args()
-    port = args.port
-    
-
-    blockchain.nodes.add("http://192.168.20.24:5001")
-
-    app.run(host='0.0.0.0', port=port)
-
+    app.run()

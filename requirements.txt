@@ -1,0 +1,11 @@
+Flask
+Werkzeug
+Jinja2
+itsdangerous
+click
+requests
+certifi
+flask_cors
+six
+gunicorn
+python-dotenv
