@@ -3,11 +3,6 @@
   <img src="./Resources/logo_microblockchain.png" width="215px" align="right"/>
 </a>
 
-
-<a href="https://github.com/Digovil/microblockchain">
-  <img src="./Resources/banner.png" width="430px"/>
-</a>
-
 # PRODUCCIÓN DE UNA BLOCKCHAIN DE BITCOIN CON MICROCONTROLADORES ESP8266 A MENOR ESCALA (MicroBlockchain)
 
 
