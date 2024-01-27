@@ -137,6 +137,6 @@ if __name__ == '__main__':
     dotenv_path = join(dirname(__file__), '.env')
 
     load_dotenv(dotenv_path)
-
+    node_registration.register_node_sender(f"{os.getenv('IP_NODE')}:{os.getenv('PORT')}", os.getenv('TYPE_NODE'))
     app.run(debug=os.getenv('FLASK_DEBUG'), port=os.getenv('PORT'))
 

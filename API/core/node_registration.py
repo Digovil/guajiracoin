@@ -20,19 +20,19 @@ class NodeRegistration:
         neighbors = self.nodes
         new_chain = None
 
-        # We're only looking for chains longer than ours
+        # Sólo buscamos cadenas más largas que las nuestras.
         max_length = len(chain)
 
         try:
 
-            # Grab and verify the chains from all the nodes in our network
+            # Toma y verifica las cadenas de todos los nodos de nuestra red.
             for node in neighbors:
                 response = requests.get(f'{node["address"]}/chain')
                 if response.status_code == 200:
                     length = response.json()['length']
                     chain = response.json()['chain']
         
-                    # Check if the length is longer and the chain is valid
+                    # Comprueba si la longitud es más larga y la cadena es válida.
                     if length > max_length and Blockchain.valid_chain(chain):
                         max_length = length
                         new_chain = chain
@@ -42,10 +42,10 @@ class NodeRegistration:
         except Exception as e:
             print(f"Se produjo el error {e}")
 
-        # Replace our chain if we discovered a new, valid chain longer than ours
+        # Reemplazar nuestra cadena si descubrimos una cadena nueva y válida más larga que la nuestra.
         if new_chain:
             chain = new_chain
-            save_chain_to_disk()  # Save the updated chain to disk
+            save_chain_to_disk(chain)  # Guarde la cadena actualizada en el disco
             return True
 
         return False
