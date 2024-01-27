@@ -18,3 +18,15 @@ def save_chain_to_disk(chain, current_transactions):
     }
     with open('blockchain.json', 'w') as f:
         json.dump(data, f, indent=4)
+
+def load_nodes_from_disk(nodes):
+    if os.path.exists('nodes.json'):
+        with open('nodes.json', 'r') as f:
+            nodes = json.load(f)
+    else:
+        # Create the nodes.json file if it doesn't exist
+        save_nodes_to_disk(nodes)
+        
+def save_nodes_to_disk(nodes):
+    with open('nodes.json', 'w') as f:
+        json.dump(nodes, f, indent=4)

@@ -1,4 +1,5 @@
 .venv/
 .env
 blockchain.json
+nodes.json
 core/__pychache__/

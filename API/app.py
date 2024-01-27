@@ -110,11 +110,10 @@ def get_connected_nodes():
 @app.route('/connect', methods=['POST'])
 def connect_to_nodes():
     values = request.get_json()
-    nodes_to_connect = values.get('nodes', [])
-    node_registration.register_node_sender(nodes_to_connect)
+    node_registration.register_node_sender(values.get('address', []), values.get('type_node', []))
 
     # Resuelve conflictos para sincronizar con la cadena más larga entre los nodos conectados
-    if node_registration.resolve_conflicts():
+    if node_registration.resolve_conflicts(blockchain.chain):
         return jsonify({'message': 'Conexión exitosa y sincronización realizada.'}), 200
     else:
         return jsonify({'message': 'Conexión exitosa, pero no se encontraron conflictos. La cadena actual es la más larga.'}), 200
