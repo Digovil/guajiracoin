@@ -1,0 +1,4 @@
+.venv/
+.env
+blockchain.json
+core/__pychache__/
