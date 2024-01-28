@@ -7,7 +7,6 @@ class Blockchain:
     def __init__(self):
         self.chain = []
         self.miners = []  
-        load_chain_from_disk(self.chain)
 
         if not self.chain:
             self.new_block(previous_hash="1", current_transactions=None, proof=100)
