@@ -76,7 +76,8 @@ def mine():
         # Forja el nuevo bloque agregándolo a la cadena.
         previous_hash = blockchain.hash(last_block)
         block = blockchain.new_block(proof, mempool.current_transactions, previous_hash)
-
+        mempool.clean_mempool_transations()
+        
         # Resuelve conflictos para sincronizar con la cadena más larga entre los nodos conectados
         if len(node_registration.nodes) > 0:
             if node_registration.resolve_conflicts(blockchain.chain):

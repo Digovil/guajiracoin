@@ -69,9 +69,4 @@ def save_mempool_to_disk(mempool):
     with open('./data/mempool.json', 'w') as f:
         json.dump(mempool, f, indent=4)
         
-def delete_mempool_transations(objetos_a_eliminar):
-    # Eliminar objetos
-    if objetos_a_eliminar:
-        lista_objetos = get_mempool()
-        lista_objetos = [objeto for objeto in lista_objetos if objeto not in objetos_a_eliminar]
-        save_mempool_to_disk(lista_objetos)
+

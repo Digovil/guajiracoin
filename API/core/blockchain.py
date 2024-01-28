@@ -22,8 +22,6 @@ class Blockchain:
         }
 
         self.chain.append(block)
-        delete_mempool_transations(current_transactions)
-        get_mempool()
         save_chain_to_disk(self.chain)
         return block
 
