@@ -10,9 +10,9 @@ def get_chain():
     return lista_objetos
 
 def load_chain_from_disk(chain):
-    data = get_chain()
-    if len(data) > 0:
-        chain = data
+    if os.path.exists('./data/blockchain.json'):
+        with open('./data/blockchain.json', 'r') as f:
+            chain = json.load(f)
     else:
         # Create the blockchain.json file if it doesn't exist
         save_chain_to_disk(chain)

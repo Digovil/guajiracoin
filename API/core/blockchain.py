@@ -8,7 +8,7 @@ class Blockchain:
         self.chain = []
         self.miners = []  
 
-        if not self.chain:
+        if not get_chain():
             self.new_block(previous_hash="1", current_transactions=None, proof=100)
 
     def new_block(self, proof, current_transactions, previous_hash=None):
