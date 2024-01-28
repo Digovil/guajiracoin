@@ -7,7 +7,8 @@ class Blockchain:
     def __init__(self):
         self.chain = []
         self.miners = []  
-
+        self.targetPrefix = "0000"
+        
         if not get_chain():
             self.new_block(previous_hash="1", current_transactions=None, proof=100)
 
@@ -62,8 +63,7 @@ class Blockchain:
 
         return True
     
-    @staticmethod
-    def valid_proof(proof):
+    def valid_proof(self, proof):
         if proof == 100: return True
         
-        return proof[:4] == "0000"
+        return proof[:4] == self.targetPrefix

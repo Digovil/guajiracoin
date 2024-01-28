@@ -41,6 +41,7 @@ aux = node_registration.get_connected_nodes()
 def get_transactions():
     response = {
         'transactions': mempool.current_transactions,
+        'targetPrefix': blockchain.targetPrefix,
         'timestamp': int(time.time())
     }
     return jsonify(response), 200
@@ -90,7 +91,7 @@ def mine():
 
         # Recompensa al minero
         mempool.new_transaction(
-            sender="0",
+            sender="cripto_way",
             recipient=miner_address,
             amount=1,
             last_block=blockchain.last_block

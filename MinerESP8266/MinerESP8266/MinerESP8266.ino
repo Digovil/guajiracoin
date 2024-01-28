@@ -7,7 +7,7 @@ const char *ssid = "Claro_01919C";
 const char *password = "P5K8H2P3B2A2";
 const char *serverAddress = "192.168.20.21:8000"; // Reemplaza con la dirección de tu servidor
 
-const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
+// const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
 
   // Obtener transacciones pendientes del servidor
@@ -39,6 +39,27 @@ void loop()
   // El bucle principal no hace nada en este ejemplo
 }
 
+void cutTargetPrefix(String &payload, String &targetPrefix) {
+  DynamicJsonDocument jsonDocument(1024); // Tamaño del documento JSON, ajusta según sea necesario
+  DeserializationError error = deserializeJson(jsonDocument, payload);
+
+  if (error) {
+    Serial.print("Error al deserializar JSON: ");
+    Serial.println(error.c_str());
+    return;
+  }
+
+  // Obtener el valor de "targetPrefix" y asignarlo a la variable
+  targetPrefix = jsonDocument["targetPrefix"].as<String>();
+
+  // Eliminar el campo "targetPrefix" del JSON
+  jsonDocument.remove("targetPrefix");
+
+  // Serializar el JSON modificado de nuevo a un String
+  serializeJson(jsonDocument, payload);
+}
+
+
 void mine()
 {
 
@@ -53,9 +74,17 @@ void mine()
 
     if (httpResponseCode == 200)
     {
+      
       String payload = http.getString();
+      String targetPrefixValue;
+
+      // Obtener y eliminar targetPrefix del JSON
+      cutTargetPrefix(payload, targetPrefixValue);
+
+      Serial.println("Dificultad: " + targetPrefixValue);
       Serial.println("Obteniendo respuesta del servidor:");
       Serial.println(payload);
+      
       // Realizar la minería localmente y obtener el proof de trabajo
       unsigned long nonce = 0;
 
@@ -64,7 +93,7 @@ void mine()
         String combinedData = payload + String(nonce);
         String hash = calcularPruebaDeTrabajo(combinedData);
 
-        if (hash.startsWith(targetPrefix))
+        if (hash.startsWith(targetPrefixValue))
         {
           Serial.println("Prueba de trabajo encontrada!");
           Serial.print("Hash: ");
