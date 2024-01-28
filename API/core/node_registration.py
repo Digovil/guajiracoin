@@ -6,15 +6,18 @@ from core.blockchain import Blockchain
 class NodeRegistration:
     def __init__(self):
         self.nodes = []
-        load_nodes_from_disk(self.nodes)
 
     def get_connected_nodes(self):
+        self.nodes = get_nodes()
         return self.nodes
     
-    def register_node_sender(self, address, type_node):
+    def register_node_sender(self, address, type_node, me_user):
         parsed_url = urlparse(address)
-        self.nodes.append({"address": parsed_url.path, "type_node": type_node})
-        save_nodes_to_disk(self.nodes) 
+        node = {"address": parsed_url.path, "type_node": type_node, "me_user": me_user}
+        index = self.nodes.index(node)
+        if index == -1:
+            self.nodes.append(node)
+            save_nodes_to_disk(self.nodes) 
 
     def resolve_conflicts(self, chain):
         neighbors = self.nodes
@@ -27,17 +30,18 @@ class NodeRegistration:
 
             # Toma y verifica las cadenas de todos los nodos de nuestra red.
             for node in neighbors:
-                response = requests.get(f'{node["address"]}/chain')
-                if response.status_code == 200:
-                    length = response.json()['length']
-                    chain = response.json()['chain']
-        
-                    # Comprueba si la longitud es más larga y la cadena es válida.
-                    if length > max_length and Blockchain.valid_chain(chain):
-                        max_length = length
-                        new_chain = chain
-                    elif length < max_length and Blockchain.valid_chain(chain):
-                        requests.post(f'{node["address"]}/update_chain', json={'chain': chain})
+                if node["me_user"] is False:
+                    response = requests.get(f'{node["address"]}/chain')
+                    if response.status_code == 200:
+                        length = response.json()['length']
+                        chain = response.json()['chain']
+            
+                        # Comprueba si la longitud es más larga y la cadena es válida.
+                        if length > max_length and Blockchain.valid_chain(chain):
+                            max_length = length
+                            new_chain = chain
+                        elif length < max_length and Blockchain.valid_chain(chain):
+                            requests.post(f'{node["address"]}/update_chain', json={'chain': chain})
 
         except Exception as e:
             print(f"Se produjo el error {e}")

@@ -22,7 +22,8 @@ class Blockchain:
         }
 
         self.chain.append(block)
-        delete_mempool_transations(objetos_a_eliminar=current_transactions)
+        delete_mempool_transations(current_transactions)
+        get_mempool()
         save_chain_to_disk(self.chain)
         return block
 
@@ -43,6 +44,9 @@ class Blockchain:
     def hash(block):
         return hashlib.sha1(json.dumps(block, sort_keys=True).encode()).hexdigest()
 
+    def get_blockchain(self):
+        self.chain  = get_chain()
+        return self.chain 
 
     def valid_chain(self, chain):
         last_block = chain[0]

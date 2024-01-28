@@ -9,3 +9,4 @@ flask_cors
 six
 gunicorn
 python-dotenv
+cryptography

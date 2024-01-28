@@ -2,24 +2,34 @@ import json
 import os
 
 # Blockchain
-
-def load_chain_from_disk(chain):
+def get_chain():
+    lista_objetos = []
     if os.path.exists('./data/blockchain.json'):
         with open('./data/blockchain.json', 'r') as f:
-            data = json.load(f)
-            chain = data['chain']
+            lista_objetos = json.load(f)
+    return lista_objetos
+
+def load_chain_from_disk(chain):
+    data = get_chain()
+    if len(data) > 0:
+        chain = data
     else:
         # Create the blockchain.json file if it doesn't exist
         save_chain_to_disk(chain)
 
 def save_chain_to_disk(chain):
-    data = {
-        'chain': chain,
-    }
+    data = chain
     with open('./data/blockchain.json', 'w') as f:
         json.dump(data, f, indent=4)
 
 # Nodos
+
+def get_nodes():
+    lista_objetos = []
+    if os.path.exists('./data/nodes.json'):
+        with open('./data/nodes.json', 'r') as f:
+            lista_objetos = json.load(f)
+    return lista_objetos
 
 def load_nodes_from_disk(nodes):
     if os.path.exists('./data/nodes.json'):
@@ -33,14 +43,26 @@ def save_nodes_to_disk(nodes):
     with open('./data/nodes.json', 'w') as f:
         json.dump(nodes, f, indent=4)
         
+def delete_nodes_transations(objetos_a_eliminar):
+    # Eliminar objetos
+    if objetos_a_eliminar:
+        lista_objetos = get_nodes()
+        lista_objetos = [objeto for objeto in lista_objetos if objeto not in objetos_a_eliminar]
+        save_nodes_to_disk(lista_objetos)
+        
 # Mempool
 
-def load_mempool_from_disk(mempool):
+def get_mempool():
+    lista_objetos = []
     if os.path.exists('./data/mempool.json'):
         with open('./data/mempool.json', 'r') as f:
-            mempool = json.load(f)
-    else:
-        # Create the mempool.json file if it doesn't exist
+            lista_objetos = json.load(f)
+    return lista_objetos
+
+def load_mempool_from_disk(mempool):
+    mempool = get_mempool()
+    
+    if len(mempool) == 0:        
         save_mempool_to_disk(mempool)
         
 def save_mempool_to_disk(mempool):
@@ -49,6 +71,7 @@ def save_mempool_to_disk(mempool):
         
 def delete_mempool_transations(objetos_a_eliminar):
     # Eliminar objetos
-    with open('mempool.json', 'r') as f:
-        lista_objetos = json.load(f)
-    lista_objetos = [objeto for objeto in lista_objetos if objeto not in objetos_a_eliminar]
+    if objetos_a_eliminar:
+        lista_objetos = get_mempool()
+        lista_objetos = [objeto for objeto in lista_objetos if objeto not in objetos_a_eliminar]
+        save_mempool_to_disk(lista_objetos)

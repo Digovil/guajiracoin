@@ -23,6 +23,24 @@ blockchain          = Blockchain()
 mempool             = Mempool()
 node_registration   = NodeRegistration()
 
+# Cargando todas las transacciones que existen en la mempool
+# print("Primera ejecucion")
+mempool.get_transactions()
+
+# Cargando la blockchain
+# print("Segunda ejecucion")
+blockchain.get_blockchain()
+
+# Cargando el registro de nodos conectado
+# print("Tercera ejecución")
+aux = node_registration.get_connected_nodes()
+
+@app.route('/transactions/get', methods=['GET'])
+def get_transactions():
+    response = {
+        'transactions': mempool.current_transactions,
+    }
+    return jsonify(response), 200
 
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
@@ -60,10 +78,11 @@ def mine():
         block = blockchain.new_block(proof, mempool.current_transactions, previous_hash)
 
         # Resuelve conflictos para sincronizar con la cadena más larga entre los nodos conectados
-        if node_registration.resolve_conflicts():
-            print('Conexión exitosa y sincronización realizada.')
-        else:
-            print('Conexión exitosa, pero no se encontraron conflictos. La cadena actual es la más larga.')
+        if len(node_registration.nodes) > 0:
+            if node_registration.resolve_conflicts(blockchain.chain):
+                print('Conexión exitosa y sincronización realizada.')
+            else:
+                print('Conexión exitosa, pero no se encontraron conflictos. La cadena actual es la más larga.')
 
         # Recompensa al minero
         mempool.new_transaction(
@@ -89,13 +108,6 @@ def full_chain():
     response = {
         'chain': blockchain.chain,
         'length': len(blockchain.chain),
-    }
-    return jsonify(response), 200
-
-@app.route('/transactions/get', methods=['GET'])
-def get_transactions():
-    response = {
-        'transactions': mempool.current_transactions,
     }
     return jsonify(response), 200
 
@@ -138,6 +150,6 @@ if __name__ == '__main__':
     dotenv_path = join(dirname(__file__), '.env')
 
     load_dotenv(dotenv_path)
-    node_registration.register_node_sender(f"{os.getenv('IP_NODE')}:{os.getenv('PORT')}", os.getenv('TYPE_NODE'))
-    app.run(debug=os.getenv('FLASK_DEBUG'), port=os.getenv('PORT'))
+    node_registration.register_node_sender(f"{os.getenv('IP_NODE')}:{os.getenv('PORT')}", os.getenv('TYPE_NODE'), me_user=True)
+    app.run(debug=os.getenv('FLASK_DEBUG'), host='0.0.0.0', port=os.getenv('PORT'), ssl_context="adhoc")
 

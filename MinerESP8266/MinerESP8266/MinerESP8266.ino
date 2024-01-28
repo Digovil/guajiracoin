@@ -5,7 +5,7 @@
 
 const char *ssid = "Claro_01919C";
 const char *password = "P5K8H2P3B2A2";
-const char *serverAddress = "nodo1-waycoin.onrender.com"; // Reemplaza con la dirección de tu servidor
+const char *serverAddress = "192.168.20.21:8000"; // Reemplaza con la dirección de tu servidor
 
 const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
@@ -54,7 +54,8 @@ void mine()
     if (httpResponseCode == 200)
     {
       String payload = http.getString();
-
+      Serial.println("Obteniendo respuesta del servidor:");
+      Serial.println(payload);
       // Realizar la minería localmente y obtener el proof de trabajo
       unsigned long nonce = 0;
 
