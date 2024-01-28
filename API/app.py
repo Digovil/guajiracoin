@@ -4,12 +4,14 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from dotenv import load_dotenv
 from os.path import join, dirname
+import time
 
 from core.blockchain import Blockchain
 from core.node_registration import NodeRegistration
 from core.mempool import Mempool
 from core.file_handling import save_chain_to_disk
-          
+
+
 app = Flask(__name__)
 
 CORS(app)
@@ -39,6 +41,7 @@ aux = node_registration.get_connected_nodes()
 def get_transactions():
     response = {
         'transactions': mempool.current_transactions,
+        'timestamp': int(time.time())
     }
     return jsonify(response), 200
 
