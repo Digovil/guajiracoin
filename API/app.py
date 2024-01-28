@@ -7,6 +7,7 @@ from os.path import join, dirname
 
 from core.blockchain import Blockchain
 from core.node_registration import NodeRegistration
+from core.mempool import Mempool
 from core.file_handling import save_chain_to_disk
           
 app = Flask(__name__)
@@ -17,25 +18,24 @@ CORS(app)
 CORS(app, origins='*')
 
 # Genere una dirección global única para este nodo
-node_identifier = str(uuid4()).replace('-', '')
-
-blockchain = Blockchain()
-
-node_registration = NodeRegistration()
+node_identifier     = str(uuid4()).replace('-', '')
+blockchain          = Blockchain()
+mempool             = Mempool()
+node_registration   = NodeRegistration()
 
 
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     values = request.get_json()
 
-    # Check that the required fields are in the POST'ed data
+    # Verifique que los campos obligatorios estén en los datos publicados
     required = ['sender', 'recipient', 'amount']
     if not all(k in values for k in required):
-        return 'Missing values', 400
+        return 'Faltan campos', 400
 
-    # Create a new Transaction
-    index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
-
+    # Crear una nueva transacción
+    # index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
+    index = mempool.new_transaction(sender=values['sender'], recipient=values['recipient'], amount=values['amount'], last_block=blockchain.last_block)
     response = {'message': f'La transacción se agregará al bloque {index}'}
     return jsonify(response), 201
 
@@ -46,18 +46,18 @@ def mine():
     # Check that the required fields are in the POST'ed data
     required = ['proof', 'miner_address']
     if not all(k in values for k in required):
-        return 'Missing values', 400
+        return 'Faltan campos', 400
 
     proof = values['proof']
     miner_address = values['miner_address']
 
-    # Validate the proof of work
     last_block = blockchain.last_block
     last_proof = last_block['proof']
+    # Validar la prueba de trabajo.
     if blockchain.valid_proof(proof):
-        # Forge the new Block by adding it to the chain
+        # Forja el nuevo bloque agregándolo a la cadena.
         previous_hash = blockchain.hash(last_block)
-        block = blockchain.new_block(proof, previous_hash)
+        block = blockchain.new_block(proof, mempool.current_transactions, previous_hash)
 
         # Resuelve conflictos para sincronizar con la cadena más larga entre los nodos conectados
         if node_registration.resolve_conflicts():
@@ -65,11 +65,12 @@ def mine():
         else:
             print('Conexión exitosa, pero no se encontraron conflictos. La cadena actual es la más larga.')
 
-        # Reward the miner
-        blockchain.new_transaction(
+        # Recompensa al minero
+        mempool.new_transaction(
             sender="0",
             recipient=miner_address,
             amount=1,
+            last_block=blockchain.last_block
         )
 
         response = {
@@ -94,7 +95,7 @@ def full_chain():
 @app.route('/transactions/get', methods=['GET'])
 def get_transactions():
     response = {
-        'transactions': blockchain.current_transactions,
+        'transactions': mempool.current_transactions,
     }
     return jsonify(response), 200
 

@@ -2,4 +2,5 @@
 .env
 blockchain.json
 nodes.json
-core/__pychache__/
+mempool.json
+core/__pycache__/
