@@ -69,8 +69,50 @@ class Blockchain:
 
         return saldo
 
-# Resto del código sigue igual...
 
+    def get_received_transactions(self, address):
+        received_transactions = []
+
+        for bloque in self.chain:
+            transacciones = bloque.get("transactions")
+
+            if transacciones is not None: 
+                for transaccion in transacciones:
+                    destinatario = transaccion.get("recipient", "")
+                    cantidad = transaccion.get("amount", 0)
+                    timestamp = bloque.get("timestamp", 0)
+
+                    if destinatario == address:
+                        received_transactions.append({
+                            'sender': transaccion.get("sender", ""),
+                            'recipient': destinatario,
+                            'amount': cantidad,
+                            'timestamp': timestamp
+                        })
+
+        return received_transactions
+
+    def get_sent_transactions(self, address):
+        sent_transactions = []
+
+        for bloque in self.chain:
+            transacciones = bloque.get("transactions")
+
+            if transacciones is not None:
+                for transaccion in transacciones:
+                    remitente = transaccion.get("sender", "")
+                    cantidad = transaccion.get("amount", 0)
+                    timestamp = bloque.get("timestamp", 0)
+
+                    if remitente == address:
+                        sent_transactions.append({
+                            'sender': remitente,
+                            'recipient': transaccion.get("recipient", ""),
+                            'amount': cantidad,
+                            'timestamp': timestamp
+                        })
+
+        return sent_transactions
 
     def valid_chain(self, chain):
         last_block = chain[0]

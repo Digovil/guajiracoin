@@ -73,6 +73,19 @@ def new_transaction():
     mempool.new_transaction(sender=values['sender'], recipient=values['recipient'], amount=values['amount'], last_block=blockchain.last_block)
     return "Transacción realizada con éxito", 201
 
+@app.route('/transactions/<address>', methods=['GET'])
+def transactions(address):
+    recipient = blockchain.get_received_transactions(address)
+    sender = blockchain.get_sent_transactions(address)
+
+    response = {
+        'address': address,
+        'sender': sender,
+        'recipient': recipient
+    }
+
+    return jsonify(response), 200
+
 @app.route('/mine', methods=['POST'])
 def mine():
     values = request.get_json()

@@ -2,13 +2,14 @@ import telebot
 from telebot import types
 import requests
 import urllib3
+import datetime
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-TOKEN = "Tu_token"
+TOKEN = "Token de tu bot"
 bot = telebot.TeleBot(TOKEN)
 
-base_url = 'https://1199-2800-484-d73-2000-c0e6-8716-2339-720e.ngrok-free.app'
+base_url = 'url del servidor'
 
 # Diccionario para almacenar el estado de sesión de los usuarios
 user_sessions = {}
@@ -77,14 +78,51 @@ def handle_balance(message):
         bot.send_message(message.chat.id, "Debes iniciar sesión para verificar tu saldo.")
 
 # Comando para obtener historial de transacciones
+
 @bot.message_handler(commands=['transactions'])
 def handle_transactions(message):
     user_id = message.from_user.id
     if user_id in user_sessions and user_sessions[user_id]['logged_in']:
         response = requests.get(f"{base_url}/transactions/{user_id}", verify=False)
-        bot.send_message(message.chat.id, response.text)
+        transactions_data = response.json()
+
+        if "recipient" in transactions_data and "sender" in transactions_data:
+            recipient_transactions = transactions_data["recipient"]
+            sender_transactions = transactions_data["sender"]
+
+            message_text = "Tus últimas transacciones:\n\n"
+
+            if recipient_transactions:
+                message_text += "Recibiste:\n"
+                for transaction in recipient_transactions:
+                    amount = transaction['amount']
+                    sender = transaction['sender']
+                    timestamp = transaction.get('timestamp', None)
+                    date_time = format_timestamp(timestamp) if timestamp else "No disponible"
+
+                    message_text += f"{amount} de {sender} - {date_time}\n"
+
+            if sender_transactions:
+                message_text += "\nEnviaste:\n"
+                for transaction in sender_transactions:
+                    amount = transaction['amount']
+                    recipient = transaction['recipient']
+                    timestamp = transaction.get('timestamp', None)
+                    date_time = format_timestamp(timestamp) if timestamp else "No disponible"
+
+                    message_text += f"{amount} a {recipient} - {date_time}\n"
+
+            bot.send_message(message.chat.id, message_text)
+        else:
+            bot.send_message(message.chat.id, "No hay transacciones disponibles.")
     else:
         bot.send_message(message.chat.id, "Debes iniciar sesión para ver tu historial de transacciones.")
+
+def format_timestamp(timestamp):
+    # Convierte la marca de tiempo Unix a un objeto datetime y luego formatea la fecha y hora
+    dt_object = datetime.datetime.fromtimestamp(timestamp)
+    formatted_date_time = dt_object.strftime("%Y-%m-%d %H:%M:%S")
+    return formatted_date_time
 
 # # Comando para transferir criptomoneda
 # @bot.message_handler(commands=['transferir'])
@@ -115,7 +153,7 @@ def handle_transfer_info(message):
 # Configurar los comandos para mostrar en la lista de comandos del bot
 commands = [
     types.BotCommand("start", "Inicia el bot"),
-    types.BotCommand("help", "Muestra la lista de comandos disponibles"),
+    #types.BotCommand("help", "Muestra la lista de comandos disponibles"),
     types.BotCommand("register", "Registra un nuevo usuario"),
     types.BotCommand("login", "Inicia sesión"),
     types.BotCommand("logout", "Cierra sesión"),
