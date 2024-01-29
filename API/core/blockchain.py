@@ -7,7 +7,7 @@ class Blockchain:
     def __init__(self):
         self.chain = []
         self.miners = []  
-        self.targetPrefix = "0000"
+        self.targetPrefix = "00000"
         
         if not get_chain():
             self.new_block(previous_hash="1", current_transactions=None, proof=100)
