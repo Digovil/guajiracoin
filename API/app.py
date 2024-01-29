@@ -61,11 +61,17 @@ def new_transaction():
     if not all(k in values for k in required):
         return 'Faltan campos', 400
 
+    # Verificar si el remitente tiene fondos suficientes
+    sender = values['sender']
+    amount = values['amount']
+    sender = blockchain.calcular_saldo(sender)
+    if sender < amount:
+        return "El remitente no tiene fondos suficientes", 404
+
     # Crear una nueva transacción
     # index = blockchain.new_transaction(values['sender'], values['recipient'], values['amount'])
-    index = mempool.new_transaction(sender=values['sender'], recipient=values['recipient'], amount=values['amount'], last_block=blockchain.last_block)
-    response = {'message': f'La transacción se agregará al bloque {index}'}
-    return jsonify(response), 201
+    mempool.new_transaction(sender=values['sender'], recipient=values['recipient'], amount=values['amount'], last_block=blockchain.last_block)
+    return "Transacción realizada con éxito", 201
 
 @app.route('/mine', methods=['POST'])
 def mine():

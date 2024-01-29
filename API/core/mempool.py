@@ -5,11 +5,14 @@ class Mempool:
         self.current_transactions = []
         
     def new_transaction(self, sender, recipient, amount, last_block):
-        self.current_transactions.append({
+        # Agregar la nueva transacción
+        new_transaction = {
             'sender': sender,
             'recipient': recipient,
             'amount': amount,
-        })
+        }
+        self.current_transactions.append(new_transaction)
+
         save_mempool_to_disk(self.current_transactions)
         return last_block["index"] + 1
     
