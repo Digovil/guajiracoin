@@ -5,10 +5,10 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-TOKEN = "6256866584:AAGSPXHfQVh-AOg1yPSslJtoyFixaNbW3_w"
+TOKEN = "Tu_token"
 bot = telebot.TeleBot(TOKEN)
 
-base_url = 'https://192.168.20.21:8000'
+base_url = 'https://1199-2800-484-d73-2000-c0e6-8716-2339-720e.ngrok-free.app'
 
 # Diccionario para almacenar el estado de sesión de los usuarios
 user_sessions = {}
