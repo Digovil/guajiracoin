@@ -46,6 +46,12 @@ def get_transactions():
     }
     return jsonify(response), 200
 
+@app.route('/balance/<address>', methods=['GET'])
+def get_balance(address):
+    print(address)
+    response = blockchain.calcular_saldo(address)
+    return jsonify(response), 200
+
 @app.route('/transactions/new', methods=['POST'])
 def new_transaction():
     values = request.get_json()

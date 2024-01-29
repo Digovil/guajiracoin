@@ -7,7 +7,7 @@ class Blockchain:
     def __init__(self):
         self.chain = []
         self.miners = []  
-        self.targetPrefix = "00000"
+        self.targetPrefix = "0000"
         
         if not get_chain():
             self.new_block(previous_hash="1", current_transactions=None, proof=100)
@@ -45,6 +45,32 @@ class Blockchain:
     def get_blockchain(self):
         self.chain  = get_chain()
         return self.chain 
+    
+    def calcular_saldo(self, direccion):
+        saldo = 0
+
+        for bloque in self.chain:
+            transacciones = bloque.get("transactions")
+
+            # Verificar si hay transacciones en el bloque
+            if transacciones is not None:
+                for transaccion in transacciones:
+                    remitente = transaccion.get("sender", "")
+                    destinatario = transaccion.get("recipient", "")
+                    cantidad = transaccion.get("amount", 0)
+
+                    # Si la dirección es el destinatario, agrega la cantidad al saldo
+                    if destinatario == direccion:
+                        saldo += cantidad
+
+                    # Si la dirección es el remitente, resta la cantidad del saldo
+                    if remitente == direccion:
+                        saldo -= cantidad
+
+        return saldo
+
+# Resto del código sigue igual...
+
 
     def valid_chain(self, chain):
         last_block = chain[0]

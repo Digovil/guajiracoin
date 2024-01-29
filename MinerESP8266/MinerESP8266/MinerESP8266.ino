@@ -6,6 +6,7 @@
 const char *ssid = "Claro_01919C";
 const char *password = "P5K8H2P3B2A2";
 const char *serverAddress = "192.168.20.21:8000"; // Reemplaza con la dirección de tu servidor
+const char *miner_address = "1799557815";
 
 // const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
@@ -164,7 +165,8 @@ bool enviarProofDeTrabajo(String hash, unsigned long nonce)
   // Construir el cuerpo JSON con el proof de trabajo y la dirección del minero
   DynamicJsonDocument jsonDocument(256); // Ajusta el tamaño según tus necesidades
   jsonDocument["proof"] = hash;
-  jsonDocument["miner_address"] = "DirecciónDelMinero";
+  // Aquí colocas la dirección que se te da al loguearte en el bot
+  jsonDocument["miner_address"] = String(miner_address);
 
   String json;
   serializeJson(jsonDocument, json);

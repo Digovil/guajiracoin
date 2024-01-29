@@ -5,7 +5,7 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-TOKEN = "6709332521:AAFUZrxZkTVJD8Enh09xZABGMeI6hZ5mmtw"
+TOKEN = "6256866584:AAGSPXHfQVh-AOg1yPSslJtoyFixaNbW3_w"
 bot = telebot.TeleBot(TOKEN)
 
 base_url = 'https://192.168.20.21:8000'
@@ -50,7 +50,7 @@ def handle_login(message):
     user_id = message.from_user.id
     if user_id not in user_sessions or not user_sessions[user_id]['logged_in']:
         user_sessions[user_id] = {'logged_in': True, 'user_id': user_id}
-        string = f"¡Inicio de sesión exitoso!\nTu user id es: {user_id}"
+        string = f"¡Inicio de sesión exitoso!\nTu dirección de billetera es: {user_id}"
         bot.send_message(message.chat.id, string)
     else:
         bot.send_message(message.chat.id, "Ya estás registrado e iniciado sesión.")
@@ -86,15 +86,15 @@ def handle_transactions(message):
     else:
         bot.send_message(message.chat.id, "Debes iniciar sesión para ver tu historial de transacciones.")
 
-# Comando para transferir criptomoneda
-@bot.message_handler(commands=['transferir'])
-def handle_transfer(message):
-    user_id = message.from_user.id
-    if user_id in user_sessions and user_sessions[user_id]['logged_in']:
-        bot.send_message(message.chat.id, "Por favor, proporciona la información de la transacción en el siguiente formato:\n"
-                                          "/transferir <destinatario> <cantidad>")
-    else:
-        bot.send_message(message.chat.id, "Debes iniciar sesión para realizar una transferencia.")
+# # Comando para transferir criptomoneda
+# @bot.message_handler(commands=['transferir'])
+# def handle_transfer(message):
+#     user_id = message.from_user.id
+#     if user_id in user_sessions and user_sessions[user_id]['logged_in']:
+#         bot.send_message(message.chat.id, "Por favor, proporciona la información de la transacción en el siguiente formato:\n"
+#                                           "/transferir <destinatario> <cantidad>")
+#     else:
+#         bot.send_message(message.chat.id, "Debes iniciar sesión para realizar una transferencia.")
 
 # Manejar el formato de transferencia proporcionado por el usuario
 @bot.message_handler(regexp=r'/transferir (.+)')
