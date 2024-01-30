@@ -42,6 +42,7 @@ def get_transactions():
     response = {
         'transactions': mempool.current_transactions,
         'targetPrefix': blockchain.targetPrefix,
+        'previous_hash': blockchain.last_block["proof"],
         'timestamp': int(time.time())
     }
     return jsonify(response), 200
@@ -91,20 +92,19 @@ def mine():
     values = request.get_json()
 
     # Check that the required fields are in the POST'ed data
-    required = ['proof', 'miner_address']
+    required = ['combinedData', 'miner_address', 'nonce']
     if not all(k in values for k in required):
         return 'Faltan campos', 400
 
-    proof = values['proof']
+    combinedData = values['combinedData']
     miner_address = values['miner_address']
-
-    last_block = blockchain.last_block
-    last_proof = last_block['proof']
+    nonce = values['nonce']
+    hash = blockchain.valid_proof(combinedData)
     # Validar la prueba de trabajo.
-    if blockchain.valid_proof(proof):
+    if hash != -1:
         # Forja el nuevo bloque agregándolo a la cadena.
-        previous_hash = blockchain.hash(last_block)
-        block = blockchain.new_block(proof, mempool.current_transactions, previous_hash)
+        previous_hash = blockchain.last_block["proof"]
+        block = blockchain.new_block(hash, mempool.current_transactions, previous_hash, nonce)
         mempool.clean_mempool_transations()
         
         # Resuelve conflictos para sincronizar con la cadena más larga entre los nodos conectados

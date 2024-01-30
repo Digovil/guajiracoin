@@ -10,15 +10,16 @@ class Blockchain:
         self.targetPrefix = "0000"
         
         if not get_chain():
-            self.new_block(previous_hash="1", current_transactions=None, proof=100)
+            self.new_block(previous_hash="1", current_transactions=None, proof="0000e0350306b01614d5e0a0e2ee468621ba475f")
 
-    def new_block(self, proof, current_transactions, previous_hash=None):
+    def new_block(self, proof, current_transactions, previous_hash, nonce):
         block = {
             'index': len(self.chain) + 1,
+            'nonce': nonce,
             'timestamp': time(),
             'transactions': current_transactions,
             'proof': proof,
-            'previous_hash': previous_hash or self.hash(self.chain[-1]) if self.chain else "1",
+            'previous_hash': previous_hash,
         }
 
         self.chain.append(block)
@@ -131,7 +132,8 @@ class Blockchain:
 
         return True
     
-    def valid_proof(self, proof):
-        if proof == 100: return True
-        
-        return proof[:4] == self.targetPrefix
+    def valid_proof(self, data_to_hash):
+        hashed_data = hashlib.sha1(data_to_hash.encode()).hexdigest()
+        if(hashed_data[:len(self.targetPrefix)] == self.targetPrefix):
+            return hashed_data
+        return -1

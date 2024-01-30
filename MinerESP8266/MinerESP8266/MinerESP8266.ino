@@ -103,7 +103,7 @@ void mine()
           Serial.println(nonce);
 
           // Enviar el proof de trabajo al servidor
-          if (enviarProofDeTrabajo(hash, nonce))
+          if (enviarProofDeTrabajo(combinedData, nonce))
           {
             Serial.println("Proof de trabajo enviado con éxito.");
           }
@@ -153,7 +153,7 @@ String calcularPruebaDeTrabajo(String data)
   return hashString;
 }
 
-bool enviarProofDeTrabajo(String hash, unsigned long nonce)
+bool enviarProofDeTrabajo(String combinedData, unsigned long nonce)
 {
 
 
@@ -164,9 +164,10 @@ bool enviarProofDeTrabajo(String hash, unsigned long nonce)
 
   // Construir el cuerpo JSON con el proof de trabajo y la dirección del minero
   DynamicJsonDocument jsonDocument(256); // Ajusta el tamaño según tus necesidades
-  jsonDocument["proof"] = hash;
+  jsonDocument["combinedData"] = combinedData;
   // Aquí colocas la dirección que se te da al loguearte en el bot
   jsonDocument["miner_address"] = String(miner_address);
+  jsonDocument["nonce"] = nonce;
 
   String json;
   serializeJson(jsonDocument, json);
