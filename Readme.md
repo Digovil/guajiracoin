@@ -3,10 +3,9 @@
 *** digovil, 2023-Presente
 -->
 
-GUAJIRA-COIN
 
 <h1>
-
+  GUAJIRA-COIN
   <br>
   <a href="https://github.com/Digovil/guajiracoin/blob/master/README.md">
     <img src="https://badgen.net/badge/icon/Español?icon=&label" /></a>
