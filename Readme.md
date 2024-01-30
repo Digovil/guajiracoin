@@ -36,7 +36,7 @@ MicroBlockchain es un proyecto educativo que simula una blockchain basada en los
 - [Contribuciones](#contribuciones)
 - [Comunidad y Soporte](#comunidad-y-soporte)
 - [Licencia](#licencia)
-- [Créditos](#créditos)
+- [Mantenedores activos del proyecto](#Mantenedores-activos-del-proyecto)
 
 ---
 
@@ -79,33 +79,8 @@ Descripción de las principales rutas y métodos de la API del servidor, como:
 
 ## Contribuciones
 
-Si estás interesado en contribuir al proyecto, tus aportes son bienvenidos.
-
-1. Fork del proyecto
-2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
-## Comunidad y Soporte
-
-Únete a nuestra comunidad en [Discord](LINK_A_DISCORD) o [otra plataforma] para obtener soporte, discutir y compartir ideas sobre el proyecto.
-
----
-
-## Licencia
-
-Guajira-Coin está distribuído principalmente bajo la licencia MIT. Mira el archivo `LICENSE` para más información.
-Algunos archivos de terceros incluídos pueden tener licencias diferentes - por favor checa sus archivos `LICENSE` (usualmente en la parte superior del codigo fuente).
-
----
-
-## Desarrollo
-
 Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar increíble para aprender, inspirarse y crear.<br>
-Cualquier contribución que haces al proyecto de Duino-Coin son gratamente apreciadas.
+Cualquier contribución que haces al proyecto de Guajira-Coin son gratamente apreciadas.
 
 ¿Como ayudar?
 
@@ -115,8 +90,20 @@ Cualquier contribución que haces al proyecto de Duino-Coin son gratamente aprec
 *   Asegúrate de que todo funciona como debería
 *   Abre una petición de subida (pull request)
 
-El código fuente del servidor, documentación para las peticiones a la API y librerías oficiales para desarrollar tus propias apps para Duino-Coin están disponibles están disponibles en la rama de [herramientas útiles](https://github.com/Digovil/guajiracoin/tree/useful-tools)
+---
 
+## Comunidad y Soporte
+
+Únete a nuestra comunidad en [Discord](https://discord.gg/yAW2ddkhuk) para obtener soporte, discutir y compartir ideas sobre el proyecto.
+
+---
+
+## Licencia
+
+Guajira-Coin está distribuído principalmente bajo la licencia MIT. Mira el archivo `LICENSE` para más información.
+Algunos archivos de terceros incluídos pueden tener licencias diferentes - por favor checa sus archivos `LICENSE` (usualmente en la parte superior del codigo fuente).
+
+---
 
 ## Mantenedores activos del proyecto
 
