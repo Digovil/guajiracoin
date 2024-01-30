@@ -1,10 +1,28 @@
+<!--
+*** Official Guajira Coin
+*** digovil, 2023-Presente
+-->
 
-<a href="https://github.com/Digovil/microblockchain">
-  <img src="./Resources/logo_microblockchain.png" width="215px" align="right"/>
-</a>
+GUAJIRA-COIN
 
-# PRODUCCIÓN DE UNA BLOCKCHAIN DE BITCOIN CON MICROCONTROLADORES ESP8266 A MENOR ESCALA (MicroBlockchain)
+<h1>
 
+  <br>
+  <a href="https://github.com/Digovil/guajiracoin/blob/master/README.md">
+    <img src="https://badgen.netbadge/icon/Español?icon=&label" /></a>
+  <a href="https://github.com/Digovil/guajiracoin/blob/master/Resources/readme_translations/README_en.md">
+    <img src="badge/icon/English?icon=&label" /></a>
+  
+</h1>
+<a href="[https://t.me/GuajiraCoinBot](Billetera Guajira Bot)">
+  <img src="https://badgen.net/badge/icon/Billetera?icon=bitcoin&label" /></a>
+<a href="https://github.com/Digovil/guajiracoin/releases/latest">
+  <img src="https://img.shields.io/badge/release-latest-ff640a.svg?style=for-the-badge" /></a>
+<br>
+
+<h3>
+  Guajira-Coin es una moneda que puede ser minada con placas ESP8266
+</h3>
 
 
 MicroBlockchain es un proyecto educativo que simula una blockchain basada en los principios fundamentales de Bitcoin, pero a una escala mucho menor. Este proyecto permite a los microcontroladores ESP8266 resolver la prueba de trabajo, ofreciendo una experiencia práctica y didáctica sobre el funcionamiento de la tecnología blockchain.
@@ -79,16 +97,43 @@ Si estás interesado en contribuir al proyecto, tus aportes son bienvenidos.
 
 ## Licencia
 
-Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
+Guajira-Coin está distribuído principalmente bajo la licencia MIT. Mira el archivo `LICENSE` para más información.
+Algunos archivos de terceros incluídos pueden tener licencias diferentes - por favor checa sus archivos `LICENSE` (usualmente en la parte superior del codigo fuente).
 
 ---
 
-## Créditos
+## Desarrollo
 
-- [Dilan Gonzalez](https://www.linkedin.com/in/digovil/)
-- [Luz Moronta](LINK_PERFIL)
-- A todos los que han contribuido a hacer de MicroBlockchain un proyecto mejor.
+Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar increíble para aprender, inspirarse y crear.<br>
+Cualquier contribución que haces al proyecto de Duino-Coin son gratamente apreciadas.
 
----
+¿Como ayudar?
 
-© 2023 [Dilan Gonzalez](https://github.com/Digovil) - MicroBlockchain Project
+*   Bifurca el proyecto (fork)
+*   Crea tu rama de desarrollo
+*   Sube tus cambios (commit)
+*   Asegúrate de que todo funciona como debería
+*   Abre una petición de subida (pull request)
+
+El código fuente del servidor, documentación para las peticiones a la API y librerías oficiales para desarrollar tus propias apps para Duino-Coin están disponibles están disponibles en la rama de [herramientas útiles](https://github.com/Digovil/guajiracoin/tree/useful-tools)
+
+## Términos de servicio
+
+Nuestros términos de servicio están disponibles aquí: <a href="https://duinocoin.com/terms">duinocoin.com/terms</a><br/>
+
+## Políticas de privacidad
+
+Nuestra política de privacidad está disponible aquí: <a href="https://duinocoin.com/privacy">duinocoin.com/privacy</a><br/>
+
+## Aviso legal
+
+Nuestro aviso legal está disponible aquí: <a href="https://duinocoin.com/disclaimer">duinocoin.com/disclaimer</a><br/>
+
+
+## Mantenedores activos del proyecto
+
+*   [@Digovil](https://github.com/Digovil/) - dilangvidal@gmail.com (Desarrollador principal en Python, fundador del proyecto)
+
+<hr>
+
+Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/revoxhere/guajiracoin/)
