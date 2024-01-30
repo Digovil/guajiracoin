@@ -117,18 +117,6 @@ Cualquier contribución que haces al proyecto de Duino-Coin son gratamente aprec
 
 El código fuente del servidor, documentación para las peticiones a la API y librerías oficiales para desarrollar tus propias apps para Duino-Coin están disponibles están disponibles en la rama de [herramientas útiles](https://github.com/Digovil/guajiracoin/tree/useful-tools)
 
-## Términos de servicio
-
-Nuestros términos de servicio están disponibles aquí: <a href="https://duinocoin.com/terms">duinocoin.com/terms</a><br/>
-
-## Políticas de privacidad
-
-Nuestra política de privacidad está disponible aquí: <a href="https://duinocoin.com/privacy">duinocoin.com/privacy</a><br/>
-
-## Aviso legal
-
-Nuestro aviso legal está disponible aquí: <a href="https://duinocoin.com/disclaimer">duinocoin.com/disclaimer</a><br/>
-
 
 ## Mantenedores activos del proyecto
 
