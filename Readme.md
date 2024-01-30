@@ -110,4 +110,4 @@ Algunos archivos de terceros incluídos pueden tener licencias diferentes - por 
 
 <hr>
 
-Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/revoxhere/guajiracoin/)
+Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/Digovil/guajiracoin/)
