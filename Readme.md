@@ -1,13 +1,29 @@
-
-<a href="https://github.com/Digovil/microblockchain">
-  <img src="./Resources/logo_microblockchain.png" width="215px" align="right"/>
-</a>
-
-# PRODUCCIÓN DE UNA BLOCKCHAIN DE BITCOIN CON MICROCONTROLADORES ESP8266 A MENOR ESCALA (MicroBlockchain)
+<!--
+*** Official Guajira Coin
+*** digovil, 2023-Presente
+-->
 
 
+<h1>
+  GUAJIRA-COIN
+  <br>
+  <a href="https://github.com/Digovil/guajiracoin/blob/master/README.md">
+    <img src="https://badgen.net/badge/icon/Español?icon=&label" /></a>
+  <a href="https://github.com/Digovil/guajiracoin/blob/master/Resources/readme_translations/README_en.md">
+    <img src="https://badgen.net/badge/icon/English?icon=&label" /></a>
+  
+</h1>
+<a href="https://t.me/GuajiraCoinBot">
+  <img src="https://badgen.net/badge/icon/Billetera?icon=bitcoin&label" /></a>
+<a href="https://github.com/Digovil/guajiracoin/releases/latest">
+  <img src="https://img.shields.io/badge/release-latest-ff640a.svg?style=for-the-badge" /></a>
+<br>
 
-MicroBlockchain es un proyecto educativo que simula una blockchain basada en los principios fundamentales de Bitcoin, pero a una escala mucho menor. Este proyecto permite a los microcontroladores ESP8266 resolver la prueba de trabajo, ofreciendo una experiencia práctica y didáctica sobre el funcionamiento de la tecnología blockchain.
+<h3>
+  Guajira-Coin es una criptomoneda que actualmente solo se puede extraer utilizando placas ESP8266.
+</h3>
+
+Esta criptomoneda está actualmente en proceso de desarrollo y se fundamenta en los principios básicos de Bitcoin, con la distinción de tener un enfoque más eco-amigable en términos de consumo energético. La particularidad de esta iniciativa radica en que su proceso de minado se puede realizar utilizando microcontroladores, lo que la hace más accesible y eficiente. Además de ofrecer la posibilidad de minar la criptomoneda, el proyecto facilita transacciones seguras y sirve como una oportunidad educativa para comprender el funcionamiento de esta tecnología fascinante y compleja.
 
 ---
 
@@ -18,7 +34,7 @@ MicroBlockchain es un proyecto educativo que simula una blockchain basada en los
 - [Contribuciones](#contribuciones)
 - [Comunidad y Soporte](#comunidad-y-soporte)
 - [Licencia](#licencia)
-- [Créditos](#créditos)
+- [Mantenedores activos del proyecto](#Mantenedores-activos-del-proyecto)
 
 ---
 
@@ -61,34 +77,36 @@ Descripción de las principales rutas y métodos de la API del servidor, como:
 
 ## Contribuciones
 
-Si estás interesado en contribuir al proyecto, tus aportes son bienvenidos.
+Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar increíble para aprender, inspirarse y crear.<br>
+Cualquier contribución que haces al proyecto de Guajira-Coin son gratamente apreciadas.
 
-1. Fork del proyecto
-2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+¿Como ayudar?
+
+*   Bifurca el proyecto (fork)
+*   Crea tu rama de desarrollo
+*   Sube tus cambios (commit)
+*   Asegúrate de que todo funciona como debería
+*   Abre una petición de subida (pull request)
 
 ---
 
 ## Comunidad y Soporte
 
-Únete a nuestra comunidad en [Discord](LINK_A_DISCORD) o [otra plataforma] para obtener soporte, discutir y compartir ideas sobre el proyecto.
+Únete a nuestra comunidad en [Discord](https://discord.gg/yAW2ddkhuk) para obtener soporte, discutir y compartir ideas sobre el proyecto.
 
 ---
 
 ## Licencia
 
-Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
+Guajira-Coin está distribuído principalmente bajo la licencia MIT. Mira el archivo `LICENSE` para más información.
+Algunos archivos de terceros incluídos pueden tener licencias diferentes - por favor checa sus archivos `LICENSE` (usualmente en la parte superior del codigo fuente).
 
 ---
 
-## Créditos
+## Mantenedores activos del proyecto
 
-- [Dilan Gonzalez](https://www.linkedin.com/in/digovil/)
-- [Luz Moronta](LINK_PERFIL)
-- A todos los que han contribuido a hacer de MicroBlockchain un proyecto mejor.
+*   [@Digovil](https://github.com/Digovil/) - dilangvidal@gmail.com (Desarrollador principal en Python, fundador del proyecto)
 
----
+<hr>
 
-© 2023 [Dilan Gonzalez](https://github.com/Digovil) - MicroBlockchain Project
+Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/revoxhere/guajiracoin/)
