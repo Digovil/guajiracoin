@@ -13,7 +13,7 @@
     <img src="https://badgen.net/badge/icon/English?icon=&label" /></a>
   
 </h1>
-<a href="[https://t.me/GuajiraCoinBot](Billetera Guajira Bot)">
+<a href="https://t.me/GuajiraCoinBot">
   <img src="https://badgen.net/badge/icon/Billetera?icon=bitcoin&label" /></a>
 <a href="https://github.com/Digovil/guajiracoin/releases/latest">
   <img src="https://img.shields.io/badge/release-latest-ff640a.svg?style=for-the-badge" /></a>
