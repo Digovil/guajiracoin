@@ -3,16 +3,25 @@ from telebot import types
 import requests
 import urllib3
 import datetime
+import hashlib
+import base58
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-TOKEN = "Token de tu bot"
+TOKEN = "6806884584:AAG2uB0PKWgQy2Cds8ft-NjYkT3bcwY2uaA"
 bot = telebot.TeleBot(TOKEN)
 
-base_url = 'url del servidor'
+base_url = 'https://digovil.pythonanywhere.com'
 
 # Diccionario para almacenar el estado de sesión de los usuarios
 user_sessions = {}
+
+def encript_address(user_id):
+    public_key = f"{user_id}".encode('utf-8')
+    sha256_hash = hashlib.sha256(public_key).hexdigest()
+    ripemd160_hash = hashlib.new('ripemd160', sha256_hash.encode('utf-8')).hexdigest()
+    address = base58.b58encode_check(bytes.fromhex("00" + ripemd160_hash)).decode('utf-8')
+    return address
 
 # Comando de inicio para el bot de Telegram
 @bot.message_handler(commands=['start'])
@@ -41,7 +50,7 @@ def handle_register(message):
     user_id = message.from_user.id
     if user_id not in user_sessions or not user_sessions[user_id]['logged_in']:
         user_sessions[user_id] = {'logged_in': True, 'user_id': user_id}
-        bot.send_message(message.chat.id, "¡Registro exitoso! Ahora estás registrado y conectado.")
+        bot.send_message(message.chat.id, f"¡Registro exitoso! Ahora estás registrado y conectado.\nTu dirección de billetera es: {encript_address(user_id)}")
     else:
         bot.send_message(message.chat.id, "Ya estás registrado. Si deseas iniciar sesión con otra cuenta, primero cierra sesión.")
 
@@ -51,7 +60,7 @@ def handle_login(message):
     user_id = message.from_user.id
     if user_id not in user_sessions or not user_sessions[user_id]['logged_in']:
         user_sessions[user_id] = {'logged_in': True, 'user_id': user_id}
-        string = f"¡Inicio de sesión exitoso!\nTu dirección de billetera es: {user_id}"
+        string = f"¡Inicio de sesión exitoso!\nTu dirección de billetera es: {encript_address(user_id)}"
         bot.send_message(message.chat.id, string)
     else:
         bot.send_message(message.chat.id, "Ya estás registrado e iniciado sesión.")
@@ -72,7 +81,7 @@ def handle_logout(message):
 def handle_balance(message):
     user_id = message.from_user.id
     if user_id in user_sessions and user_sessions[user_id]['logged_in']:
-        response = requests.get(f"{base_url}/balance/{user_id}", verify=False)
+        response = requests.get(f"{base_url}/balance/{encript_address(user_id)}", verify=False)
         bot.send_message(message.chat.id, response.text)
     else:
         bot.send_message(message.chat.id, "Debes iniciar sesión para verificar tu saldo.")
@@ -83,7 +92,7 @@ def handle_balance(message):
 def handle_transactions(message):
     user_id = message.from_user.id
     if user_id in user_sessions and user_sessions[user_id]['logged_in']:
-        response = requests.get(f"{base_url}/transactions/{user_id}", verify=False)
+        response = requests.get(f"{base_url}/transactions/{encript_address(user_id)}", verify=False)
         transactions_data = response.json()
 
         if "recipient" in transactions_data and "sender" in transactions_data:
@@ -144,7 +153,7 @@ def handle_transfer_info(message):
             bot.send_message(message.chat.id, "Formato incorrecto. Usa /transferir <destinatario> <cantidad>")
         else:
             recipient, amount = transfer_info
-            payload = {'sender': str(user_id), 'recipient': str(recipient), 'amount': float(amount)}
+            payload = {'sender': str(encript_address(user_id)), 'recipient': str(encript_address(recipient)), 'amount': float(amount)}
             response = requests.post(f"{base_url}/transactions/new", json=payload, verify=False)
             bot.send_message(message.chat.id, response.text)
     else:
