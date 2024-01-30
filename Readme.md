@@ -23,7 +23,7 @@
   Guajira-Coin es una criptomoneda que actualmente solo se puede extraer utilizando placas ESP8266.
 </h3>
 
-Esta criptomoneda está actualmente en proceso de desarrollo y se fundamenta en los principios básicos de Bitcoin, con la distinción de tener un enfoque más eco-amigable en términos de consumo energético. La particularidad de esta iniciativa radica en que su proceso de minado se puede realizar utilizando microcontroladores, lo que la hace más accesible y eficiente. Además de ofrecer la posibilidad de minar la criptomoneda, el proyecto facilita transacciones seguras y sirve como una oportunidad educativa para comprender el funcionamiento de esta tecnología fascinante y compleja.
+Esta criptomoneda está en proceso de desarrollo y se fundamenta en los principios básicos de Bitcoin, con la distinción de tener un enfoque más eco-amigable en términos de consumo energético. La particularidad de esta iniciativa radica en que su proceso de minado se puede realizar utilizando microcontroladores, lo que la hace más accesible y eficiente. Además de ofrecer la posibilidad de minar la criptomoneda, el proyecto facilita transacciones seguras y sirve como una oportunidad para comprender el funcionamiento de la tecnología blockchain y las criptomonedas.
 
 ---
 
@@ -61,6 +61,7 @@ Esta criptomoneda está actualmente en proceso de desarrollo y se fundamenta en 
 
 ### Minería con ESP8266
 - Configura las credenciales de WiFi en el código del ESP8266
+- Agrega la dirección de tu billetera
 - Sube el código a tu ESP8266
 - El dispositivo empezará a minar automáticamente, interactuando con el servidor
 
@@ -109,4 +110,4 @@ Algunos archivos de terceros incluídos pueden tener licencias diferentes - por 
 
 <hr>
 
-Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/revoxhere/guajiracoin/)
+Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/Digovil/guajiracoin/)
