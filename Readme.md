@@ -61,6 +61,7 @@ Esta criptomoneda está en proceso de desarrollo y se fundamenta en los principi
 
 ### Minería con ESP8266
 - Configura las credenciales de WiFi en el código del ESP8266
+- Agrega la dirección de tu billetera
 - Sube el código a tu ESP8266
 - El dispositivo empezará a minar automáticamente, interactuando con el servidor
 
