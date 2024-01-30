@@ -20,11 +20,10 @@
 <br>
 
 <h3>
-  Guajira-Coin es una moneda que puede ser minada con placas ESP8266
+  Guajira-Coin es una moneda que por el momento, solo puede ser minada con placas ESP8266...
 </h3>
 
-
-MicroBlockchain es un proyecto educativo que simula una blockchain basada en los principios fundamentales de Bitcoin, pero a una escala mucho menor. Este proyecto permite a los microcontroladores ESP8266 resolver la prueba de trabajo, ofreciendo una experiencia práctica y didáctica sobre el funcionamiento de la tecnología blockchain.
+Esta criptomoneda está actualmente en proceso de desarrollo y se fundamenta en los principios básicos de Bitcoin, con la distinción de tener un enfoque más eco-amigable en términos de consumo energético. La particularidad de esta iniciativa radica en que su proceso de minado se puede realizar utilizando microcontroladores, lo que la hace más accesible y eficiente. Además de ofrecer la posibilidad de minar la criptomoneda, el proyecto facilita transacciones seguras y sirve como una oportunidad educativa para comprender el funcionamiento de esta tecnología fascinante y compleja.
 
 ---
 
