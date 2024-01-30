@@ -9,9 +9,9 @@ GUAJIRA-COIN
 
   <br>
   <a href="https://github.com/Digovil/guajiracoin/blob/master/README.md">
-    <img src="https://badgen.netbadge/icon/Español?icon=&label" /></a>
+    <img src="https://badgen.net/badge/icon/Español?icon=&label" /></a>
   <a href="https://github.com/Digovil/guajiracoin/blob/master/Resources/readme_translations/README_en.md">
-    <img src="badge/icon/English?icon=&label" /></a>
+    <img src="https://badgen.net/badge/icon/English?icon=&label" /></a>
   
 </h1>
 <a href="[https://t.me/GuajiraCoinBot](Billetera Guajira Bot)">
