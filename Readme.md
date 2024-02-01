@@ -1,6 +1,6 @@
 <!--
 *** Official Guajira Coin
-*** digovil, 2023-Presente
+*** digovil, 2023-Present
 -->
 
 
@@ -8,107 +8,107 @@
   GUAJIRA-COIN
   <br>
   <a href="https://github.com/Digovil/guajiracoin/blob/master/README.md">
-    <img src="https://badgen.net/badge/icon/Español?icon=&label" /></a>
-  <a href="https://github.com/Digovil/guajiracoin/blob/master/Resources/readme_translations/README_en.md">
     <img src="https://badgen.net/badge/icon/English?icon=&label" /></a>
+  <a href="https://github.com/Digovil/guajiracoin/blob/master/Resources/readme_translations/README_es.md">
+    <img src="https://badgen.net/badge/icon/Español?icon=&label" /></a>
   
 </h1>
 <a href="https://t.me/GuajiraCoinBot">
-  <img src="https://badgen.net/badge/icon/Billetera?icon=bitcoin&label" /></a>
+  <img src="https://badgen.net/badge/icon/Wallet?icon=bitcoin&label" /></a>
 <a href="https://github.com/Digovil/guajiracoin/releases/latest">
   <img src="https://img.shields.io/badge/release-latest-ff640a.svg?style=for-the-badge" /></a>
 <br>
 
 <h3>
-  Guajira-Coin es una criptomoneda que actualmente solo se puede extraer utilizando placas ESP8266.
+  Guajira-Coin is a cryptocurrency that can currently only be mined using ESP8266 boards.
 </h3>
 
-Esta criptomoneda está en proceso de desarrollo y se fundamenta en los principios básicos de Bitcoin, con la distinción de tener un enfoque más eco-amigable en términos de consumo energético. La particularidad de esta iniciativa radica en que su proceso de minado se puede realizar utilizando microcontroladores, lo que la hace más accesible y eficiente. Además de ofrecer la posibilidad de minar la criptomoneda, el proyecto facilita transacciones seguras y sirve como una oportunidad para comprender el funcionamiento de la tecnología blockchain y las criptomonedas.
+This cryptocurrency is in development and is based on the basic principles of Bitcoin, with the distinction of having a more eco-friendly approach in terms of energy consumption. The uniqueness of this initiative lies in the fact that its mining process can be performed using microcontrollers, making it more accessible and efficient. In addition to offering the possibility of mining the cryptocurrency, the project facilitates secure transactions and serves as an opportunity to understand the functioning of blockchain technology and cryptocurrencies.
 
 ---
 
-## Contenidos
-- [Instalación](#instalación)
-- [Cómo empezar](#cómo-empezar)
-- [API y Rutas](#api-y-rutas)
-- [Contribuciones](#contribuciones)
-- [Comunidad y Soporte](#comunidad-y-soporte)
-- [Licencia](#licencia)
-- [Mantenedores activos del proyecto](#Mantenedores-activos-del-proyecto)
+## Contents
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [API and Routes](#api-and-routes)
+- [Contributions](#contributions)
+- [Community and Support](#community-and-support)
+- [License](#license)
+- [Active Project Maintainers](#active-project-maintainers)
 
 ---
 
-## Instalación
+## Installation
 
-### Requisitos previos
+### Prerequisites
 - Python 3.x
 - Flask
-- Microcontroladores ESP8266
-- Dependencias especificadas en `requirements.txt`
+- ESP8266 Microcontrollers
+- Dependencies specified in `requirements.txt`
 
-### Pasos de instalación
-1. Clonar el repositorio: `git clone URL_DEL_REPOSITORIO`
-2. Instalar dependencias: `pip install -r requirements.txt`
-3. Instrucciones adicionales si las hay
-
----
-
-## Cómo empezar
-
-### Configuración del servidor Blockchain
-- Iniciar el servidor: `python app.py`
-- El servidor gestionará la cadena de bloques y las transacciones
-
-### Minería con ESP8266
-- Configura las credenciales de WiFi en el código del ESP8266
-- Agrega la dirección de tu billetera
-- Sube el código a tu ESP8266
-- El dispositivo empezará a minar automáticamente, interactuando con el servidor
+### Installation Steps
+1. Clone the repository: `git clone REPOSITORY_URL`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Additional instructions if any
 
 ---
 
-## API y Rutas
+## Getting Started
 
-Descripción de las principales rutas y métodos de la API del servidor, como:
-- `GET /chain`: Obtiene la cadena de bloques actual
-- `POST /transactions/new`: Añade una nueva transacción
-- `POST /mine`: Realiza la minería de un nuevo bloque
+### Blockchain Server Configuration
+- Start the server: `python app.py`
+- The server will manage the blockchain and transactions
 
----
-
-## Contribuciones
-
-Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar increíble para aprender, inspirarse y crear.<br>
-Cualquier contribución que haces al proyecto de Guajira-Coin son gratamente apreciadas.
-
-¿Como ayudar?
-
-*   Bifurca el proyecto (fork)
-*   Crea tu rama de desarrollo
-*   Sube tus cambios (commit)
-*   Asegúrate de que todo funciona como debería
-*   Abre una petición de subida (pull request)
+### Mining with ESP8266
+- Configure WiFi credentials in the ESP8266 code
+- Add your wallet address
+- Upload the code to your ESP8266
+- The device will start mining automatically, interacting with the server
 
 ---
 
-## Comunidad y Soporte
+## API and Routes
 
-Únete a nuestra comunidad en [Discord](https://discord.gg/yAW2ddkhuk) para obtener soporte, discutir y compartir ideas sobre el proyecto.
-
----
-
-## Licencia
-
-Guajira-Coin está distribuído principalmente bajo la licencia MIT. Mira el archivo `LICENSE` para más información.
-Algunos archivos de terceros incluídos pueden tener licencias diferentes - por favor checa sus archivos `LICENSE` (usualmente en la parte superior del codigo fuente).
+Description of the main routes and methods of the server's API, such as:
+- `GET /chain`: Get the current blockchain
+- `POST /transactions/new`: Add a new transaction
+- `POST /mine`: Perform mining for a new block
 
 ---
 
-## Mantenedores activos del proyecto
+## Contributions
 
-*   [@Digovil](https://github.com/Digovil/) - dgonzalezv@uniguajira.edu.co (Desarrollador, fundador del proyecto)
-*   Luz Moronta Iguaran - lmoronta@uniguajira.edu.co (Desarrolladora, cofundadora del proyecto)
+Contributions are what make the open-source community an amazing place to learn, inspire, and create.<br>
+Any contributions you make to the Guajira-Coin project are greatly appreciated.
+
+How to contribute?
+
+*   Fork the project
+*   Create your development branch
+*   Upload your changes (commit)
+*   Ensure everything works as it should
+*   Open a pull request
+
+---
+
+## Community and Support
+
+Join our community on [Discord](https://discord.gg/yAW2ddkhuk) to get support, discuss, and share ideas about the project.
+
+---
+
+## License
+
+Guajira-Coin is primarily distributed under the MIT license. See the `LICENSE` file for more information.
+Some included third-party files may have different licenses - please check their `LICENSE` files (usually at the top of the source code).
+
+---
+
+## Active Project Maintainers
+
+*   [@Digovil](https://github.com/Digovil/) - dgonzalezv@uniguajira.edu.co (Developer, project founder)
+*   Luz Moronta Iguaran - lmoronta@uniguajira.edu.co (Developer, project co-founder)
 
 <hr>
 
-Enlace del Proyecto: [https://github.com/Digovil/guajiracoin/](https://github.com/Digovil/guajiracoin/)
+Project Link: [https://github.com/Digovil/guajiracoin/](https://github.com/Digovil/guajiracoin/)
