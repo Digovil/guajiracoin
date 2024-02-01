@@ -106,7 +106,8 @@ Algunos archivos de terceros incluídos pueden tener licencias diferentes - por 
 
 ## Mantenedores activos del proyecto
 
-*   [@Digovil](https://github.com/Digovil/) - dilangvidal@gmail.com (Desarrollador principal en Python, fundador del proyecto)
+*   [@Digovil](https://github.com/Digovil/) - dgonzalezv@uniguajira.edu.co (Desarrollador, fundador del proyecto)
+*   Luz Moronta Iguaran - lmoronta@uniguajira.edu.co (Desarrolladora, cofundadora del proyecto)
 
 <hr>
 
