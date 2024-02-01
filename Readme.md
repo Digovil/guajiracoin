@@ -56,7 +56,7 @@ Esta criptomoneda está en proceso de desarrollo y se fundamenta en los principi
 ## Cómo empezar
 
 ### Configuración del servidor Blockchain
-- Iniciar el servidor: `python archivo_servidor.py`
+- Iniciar el servidor: `python app.py`
 - El servidor gestionará la cadena de bloques y las transacciones
 
 ### Minería con ESP8266
