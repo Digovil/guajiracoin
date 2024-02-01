@@ -7,7 +7,7 @@
 <h1>
   GUAJIRA-COIN
   <br>
-  <a href="https://github.com/Digovil/guajiracoin/blob/master/README.md">
+  <a href="https://github.com/Digovil/guajiracoin">
     <img src="https://badgen.net/badge/icon/English?icon=&label" /></a>
   <a href="https://github.com/Digovil/guajiracoin/blob/master/Resources/readme_translations/README_es.md">
     <img src="https://badgen.net/badge/icon/Español?icon=&label" /></a>
