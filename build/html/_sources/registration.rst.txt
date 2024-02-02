@@ -1,0 +1,31 @@
+.. _registration:
+
+Registro
+=============================
+
+Create an account with Guajira Coin and start transferring coins.
+
+Getting Started
+---------------
+
+1. Visit the Guajira Coin registration portal.
+2. Sign up for a new account.
+3. Verify your email address.
+4. Log in to your account.
+
+Transferring Coins
+-------------------
+
+1. Obtain the recipient's wallet address.
+2. Access the transfer feature on the platform.
+3. Enter the recipient's wallet address and the amount to transfer.
+4. Confirm the transaction.
+
+Security Tips
+-------------
+
+- Use a secure password.
+- Enable two-factor authentication.
+- ...
+
+Happy transferring!

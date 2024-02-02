@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guajira-Coin Documentación &mdash; documentación de Guajira-Coin - </title>
+  <title>Minar con Guajira-Coin &mdash; documentación de Guajira-Coin - </title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
@@ -22,7 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Contribuir" href="contribute.html" /> 
+    <link rel="next" title="Registro" href="registration.html" />
+    <link rel="prev" title="Contribuir" href="contribute.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -33,7 +34,7 @@
 
           
           
-          <a href="#" class="icon icon-home">
+          <a href="index.html" class="icon icon-home">
             Guajira-Coin
           </a>
 <div role="search">
@@ -45,9 +46,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribuir</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mining.html">Minar con Guajira-Coin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Minar con Guajira-Coin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registration.html">Registro</a></li>
 </ul>
 
@@ -57,17 +58,17 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Guajira-Coin</a>
+          <a href="index.html">Guajira-Coin</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Guajira-Coin Documentación</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Minar con Guajira-Coin</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/index.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+            <a href="_sources/mining.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
       </li>
   </ul>
   <hr/>
@@ -75,37 +76,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="guajira-coin-documentacion">
-<h1>Guajira-Coin Documentación<a class="headerlink" href="#guajira-coin-documentacion" title="Link to this heading"></a></h1>
-<p>Esta criptomoneda busca brindar soluciones estratégicas
-a los problemas que pesenta la tecnología blockchain, como
-lo es: El consumo excesivo de electricidad, el límite
-de transacciones por segundos, entre otros más.</p>
+  <section id="minar-con-guajira-coin">
+<span id="mining"></span><h1>Minar con Guajira-Coin<a class="headerlink" href="#minar-con-guajira-coin" title="Link to this heading"></a></h1>
+<p>Aprende cómo minar Guajira-Coin y contribuir a la red.</p>
 <div class="admonition important">
 <p class="admonition-title">Importante</p>
 <p>El estado de la criptomoneda es funcional, pero no es operativa, aún se encuentra en desarrollo.</p>
 </div>
-<p>Este proyecto nace de dos universitarios egresados de la Universidad
-de La Guajira en Colombia. El objetivo principal de ellos, era obtener
-beneficios minando una criptomoneda utilizando microcontroladores de
-bajo costo, rápidamente se dieron cuenta de que no era rentable con
-ninguna moneda vigente en el mercado, sin embargo existe una criptomoneda
-llamada Duino-Coin, la cuál es una moneda equitativa que admite casi cualquier
-dispositivo, pero es solamente de ámbito académico, es decir no
-existe una moneda que te de rentabilidad real, utilizando hardware de bajo costo.</p>
-<p>Encontrandose en la necesidad de cambiar el objetivo principal del proyecto,
-centrandose en entender a profundidad el funcionamiento y las necesidades
-de la tecnología Blockchain. Creando desde ceros una criptomoneda de código abierto.</p>
-<section id="navegacion">
-<h2>Navegación<a class="headerlink" href="#navegacion" title="Link to this heading"></a></h2>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribuir</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mining.html">Minar con Guajira-Coin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registration.html">Registro</a></li>
-</ul>
-</div>
+<section id="requisitos">
+<h2>Requisitos<a class="headerlink" href="#requisitos" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>ESP8266</p></li>
+<li><p>Arduino IDE</p></li>
+<li><p>Librerías: ArduinoBearSSL, ArduinoJson</p></li>
+</ol>
+</section>
+<section id="inicio">
+<h2>Inicio<a class="headerlink" href="#inicio" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Descarga y ejecuta el archivo MinerESP8266</p></li>
+<li><p>Configuración de la red wifi, sólo admite Wifi 2.4GHz:</p>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">ssid</span> <span class="pre">=</span> <span class="pre">&quot;Colocas</span> <span class="pre">tu</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">red&quot;;</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">password</span> <span class="pre">=</span> <span class="pre">&quot;Colocas</span> <span class="pre">tu</span> <span class="pre">contraseña</span> <span class="pre">de</span> <span class="pre">red&quot;;</span></code></p>
+</div></blockquote>
+</li>
+</ol>
+<p>4. Crear una billetera: Para esto simplemente ingresa al bot de
+telegram <a class="reference external" href="https://t.me/GuajiraCoinBot">https://t.me/GuajiraCoinBot</a> Billetera de Guajira-Coin.
+le das /start, luego /registrar y posteriormente /login y te dará
+una bienvenida con la respectiva dirección de tu billetera.
+5. Configuración de la dirección del minero:</p>
+<blockquote>
+<div><p><code class="code docutils literal notranslate"><span class="pre">miner_address</span> <span class="pre">=</span> <span class="pre">&quot;colocas</span> <span class="pre">la</span> <span class="pre">dirección</span> <span class="pre">de</span> <span class="pre">tu</span> <span class="pre">minero&quot;;</span></code></p>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li><p>Flashea el ESP8266 y listo!</p></li>
+</ol>
 </section>
 </section>
 
@@ -113,7 +120,8 @@ de la tecnología Blockchain. Creando desde ceros una criptomoneda de código ab
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
-        <a href="contribute.html" class="btn btn-neutral float-right" title="Contribuir" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="contribute.html" class="btn btn-neutral float-left" title="Contribuir" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="registration.html" class="btn btn-neutral float-right" title="Registro" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

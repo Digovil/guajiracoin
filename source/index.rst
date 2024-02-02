@@ -24,12 +24,15 @@ Encontrandose en la necesidad de cambiar el objetivo principal del proyecto,
 centrandose en entender a profundidad el funcionamiento y las necesidades 
 de la tecnología Blockchain. Creando desde ceros una criptomoneda de código abierto.
 
-
-Navigation
-==========
+Navegación
+===============
 
 .. toctree::
-    :caption: Iniciar
-    :titlesonly:
+   :maxdepth: 2
+   :caption: Contenido:
+   :titlesonly:   
 
-    instalacion
+   contribute
+   mining
+   registration
+   ...
