@@ -39,7 +39,6 @@ everything that you can with Sphinx "out-of-the-box".
 .. toctree::
     :titlesonly:
 
-    kitchen-sink/index
 
 Browsing through that section should give you a good idea of how stuff looks
 in this theme.
@@ -62,17 +61,12 @@ sort of site navigation that's necessary for "real" documentation.
     :titlesonly:
 
     placeholder-one
-    placeholder-two
-    really-long-title
-    long-page
     External Link <https://www.sphinx-doc.org>
 
 .. toctree::
     :hidden:
     :caption: Additional "hidden" Pages
 
-    placeholder-three
-    placeholder-four
     Sphinx Theme Gallery <https://sphinx-themes.org>
 
 Some pages like :doc:`placeholder-three` are declared in a "hidden"
