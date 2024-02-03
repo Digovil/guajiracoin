@@ -3,7 +3,16 @@
 Minar con Guajira-Coin
 =========================
 
+
+.. image:: _static/guajiracoin.jpg
+   :width: 600
+   :alt: Descripción de la imagen
+   :align: center
+
+
+   
 Aprende cómo minar Guajira-Coin y contribuir a la red.
+
 
 .. important::
 
