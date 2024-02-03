@@ -5,7 +5,8 @@ Minar con Guajira-Coin
 
 
 .. image:: _static/guajiracoin.jpg
-   :width: 600
+   :width: 400
+   :heigth: 200
    :alt: Descripción de la imagen
    :align: center
 
