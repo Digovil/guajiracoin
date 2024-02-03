@@ -9,6 +9,7 @@
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -22,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Minar Guajira-Coin" href="mining.html" />
+    <link rel="next" title="Minar con Guajira-Coin" href="mining.html" />
     <link rel="prev" title="Guajira-Coin Documentación" href="index.html" /> 
 </head>
 
@@ -45,16 +46,10 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contenido</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contribuir</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-guidelines">Code Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="mining.html">Minar Guajira-Coin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registration.html">Registro</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contribuir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mining.html">Minar con Guajira-Coin</a></li>
 </ul>
 
         </div>
@@ -83,46 +78,37 @@
              
   <section id="contribuir">
 <span id="contribute"></span><h1>Contribuir<a class="headerlink" href="#contribuir" title="Link to this heading"></a></h1>
-<p>Welcome to the Guajira Coin project! We appreciate your interest in contributing.</p>
-<section id="getting-started">
-<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>¡Bienvenidos al proyecto Guajira Coin! Agradecemos su interés en contribuir.</p>
+<section id="empezando">
+<h2>Empezando<a class="headerlink" href="#empezando" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>Fork the Guajira Coin repository on GitHub.</p></li>
-<li><p>Clone your fork locally:</p></li>
+<li><p>Bifurca el repositorio de Guajira Coin en GitHub.</p></li>
+<li><p>Clona tu bifurcación localmente:</p></li>
 </ol>
-<p>git clone <a class="reference external" href="https://github.com/YOUR_USERNAME/guajira-coin.git">https://github.com/YOUR_USERNAME/guajira-coin.git</a></p>
+<p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/Digovil/guajira-coin.git</span></code></p>
 <ol class="arabic simple" start="3">
-<li><p>Create a virtual environment and install dependencies:</p></li>
+<li><p>Cree un entorno virtual e instale dependencias:</p></li>
 </ol>
-<p>cd guajira-coin
-python -m venv venv
-source venv/bin/activate # On Windows, use venvScriptsactivate
-pip install -r requirements.txt</p>
+<p><code class="code docutils literal notranslate"><span class="pre">cd</span> <span class="pre">guajira-coin</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">venv</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">source</span> <span class="pre">venv/bin/activate</span> <span class="pre">#</span> <span class="pre">On</span> <span class="pre">Windows,</span> <span class="pre">use</span> <span class="pre">venvScriptsactivate</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
 <ol class="arabic simple" start="4">
-<li><p>Make your changes, commit, and push to your fork.</p></li>
-<li><p>Open a pull request on GitHub.</p></li>
+<li><p>Realiza los cambios, commit, y realiza el pushea el fork.</p></li>
+<li><p>Abre un pull request en GitHub.</p></li>
 </ol>
 </section>
-<section id="code-guidelines">
-<h2>Code Guidelines<a class="headerlink" href="#code-guidelines" title="Link to this heading"></a></h2>
+<section id="directrices-del-codigo">
+<h2>Directrices del código<a class="headerlink" href="#directrices-del-codigo" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Follow the PEP 8 style guide.</p></li>
-<li><p>Write clear and concise code comments.</p></li>
+<li><p>Sigue la guía de estilo PEP 8.</p></li>
+<li><p>Escriba comentarios de código claros y concisos.</p></li>
 <li><p>…</p></li>
 </ul>
 </section>
-<section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>If you’re updating documentation, make changes in the <cite>/docs/source</cite> directory.</p></li>
-<li><p>Use Sphinx to build the documentation locally:</p></li>
-</ul>
-<p>cd docs
-make html</p>
-<ul class="simple">
-<li><p>Verify your changes by opening <cite>build/html/index.html</cite> in a web browser.</p></li>
-</ul>
-<p>Happy contributing!</p>
+<section id="documentacion">
+<h2>Documentación<a class="headerlink" href="#documentacion" title="Link to this heading"></a></h2>
+<p>En construcción…</p>
 </section>
 </section>
 
@@ -131,7 +117,7 @@ make html</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
         <a href="index.html" class="btn btn-neutral float-left" title="Guajira-Coin Documentación" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
-        <a href="mining.html" class="btn btn-neutral float-right" title="Minar Guajira-Coin" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mining.html" class="btn btn-neutral float-right" title="Minar con Guajira-Coin" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

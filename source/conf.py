@@ -25,3 +25,4 @@ language = 'es'
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_favicon = '_static/favicon.ico'  # Ruta al archivo de ícono

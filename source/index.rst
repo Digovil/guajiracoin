@@ -29,10 +29,9 @@ Navegación
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contenido:
+   :caption: Contenido
    :titlesonly:   
 
    contribute
    mining
-   registration
    ...
