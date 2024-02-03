@@ -13,9 +13,7 @@ author = 'Dilan Gonzalez, Luz Moronta'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    'sphinx.ext.coverage',
-]
+extensions = []
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -28,9 +26,9 @@ language = 'es'
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 html_favicon = '_static/favicon.ico'  # Ruta al archivo de ícono
-
-coverage_show_media_button = True
-coverage_show_banner = True
-coverage_html_title = 'Minería de Criptomonedas con ESP8266'
-coverage_html_logo = '_static/guajiracoin.jpg'  # Ruta de tu imagen de portada
-
+html_context = {
+    'meta_description': 'Minería de Criptomonedas con ESP8266',
+    'meta_keywords': 'ESP8266, Guajira, Criptomonedas, GuajiraCoin, Guajira-Coin, Dilan Gonzalez, Luz Moronta',
+    'og_image': '_static/guajiracoin.jpg',
+    'og_description': 'Minando la criptomoneda Guajira-Coin utilizando un microcontrolador',
+}
