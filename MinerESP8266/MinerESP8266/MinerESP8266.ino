@@ -5,8 +5,8 @@
 
 const char *ssid = "Claro_01919C";
 const char *password = "P5K8H2P3B2A2";
-const char *serverAddress = "your_server_address"; // Reemplaza con la dirección de tu servidor
-const char *miner_address = "your_address";
+const char *serverAddress = "digovil.pythonanywhere.com"; // Reemplaza con la dirección de tu servidor
+const char *miner_address = "17bSSrgFKdn7uKa9L2TcvHbW5CwmqwvwjW";
 
 // const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
@@ -32,42 +32,11 @@ void setup()
   }
   Serial.println("Conectado a la red WiFi");
 
-  mine();
 }
 
 void loop()
 {
-  // El bucle principal no hace nada en este ejemplo
-}
-
-void cutTargetPrefix(String &payload, String &targetPrefix) {
-  DynamicJsonDocument jsonDocument(1024); // Tamaño del documento JSON, ajusta según sea necesario
-  DeserializationError error = deserializeJson(jsonDocument, payload);
-
-  if (error) {
-    Serial.print("Error al deserializar JSON: ");
-    Serial.println(error.c_str());
-    return;
-  }
-
-  // Obtener el valor de "targetPrefix" y asignarlo a la variable
-  targetPrefix = jsonDocument["targetPrefix"].as<String>();
-
-  // Eliminar el campo "targetPrefix" del JSON
-  jsonDocument.remove("targetPrefix");
-
-  // Serializar el JSON modificado de nuevo a un String
-  serializeJson(jsonDocument, payload);
-}
-
-
-void mine()
-{
-
-  while (true)
-  {
-
-
+  
     HTTPClient http;
     String url = "https://" + String(serverAddress) + "/transactions/get"; // Cambia a HTTPS
     http.begin(client, url);
@@ -130,7 +99,26 @@ void mine()
     http.end();
 
     delay(5000); // Espera 5 segundos antes de comenzar una nueva prueba de trabajo
+}
+
+void cutTargetPrefix(String &payload, String &targetPrefix) {
+  DynamicJsonDocument jsonDocument(1024); // Tamaño del documento JSON, ajusta según sea necesario
+  DeserializationError error = deserializeJson(jsonDocument, payload);
+
+  if (error) {
+    Serial.print("Error al deserializar JSON: ");
+    Serial.println(error.c_str());
+    return;
   }
+
+  // Obtener el valor de "targetPrefix" y asignarlo a la variable
+  targetPrefix = jsonDocument["targetPrefix"].as<String>();
+
+  // Eliminar el campo "targetPrefix" del JSON
+  jsonDocument.remove("targetPrefix");
+
+  // Serializar el JSON modificado de nuevo a un String
+  serializeJson(jsonDocument, payload);
 }
 
 String calcularPruebaDeTrabajo(String data)
