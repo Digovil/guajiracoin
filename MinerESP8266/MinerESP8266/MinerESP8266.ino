@@ -26,7 +26,7 @@
 #include <AdafruitIO_WiFi.h>
 
 #define IO_USERNAME  "digovil"
-#define IO_KEY       "aio_nxaJ11oHZ8pTILgvuzyUfeG3xmua"
+#define IO_KEY       "aio_svtD07vNqbVR5D5vijrT6pfxSggB"
 
 const char *ssid = "Claro_01919C";
 const char *password = "P5K8H2P3B2A2";
@@ -39,6 +39,7 @@ const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
 WiFiClientSecure client;
 AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, ssid, password);
 AdafruitIO_Feed *Consola = io.feed("consola");
+
 
 void setup()
 {
@@ -57,14 +58,19 @@ void setup()
     Serial.println("Conectando a WiFi...");
   }
   Serial.println("Conectado a la red WiFi");
-
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
+ 
 }
 
 void loop()
 {
+    digitalWrite(LED_BUILTIN, LOW);
     mining();
     delay(10);
 }
+
+
 
 void mining() {
 
@@ -75,21 +81,21 @@ void mining() {
 
     String url = "https://" + String(serverAddress) + "/transactions/get"; // Cambia a HTTPS
     http.begin(client, url);
+    digitalWrite(LED_BUILTIN, HIGH); 
     int httpResponseCode = http.GET();
 
     if (httpResponseCode == 200)
     {
-      
+      digitalWrite(LED_BUILTIN, LOW);
       String payload = http.getString();
       String targetPrefixValue;
       http.end();
 
       // Obtener y eliminar targetPrefix del JSON
       cutTargetPrefix(payload, targetPrefixValue);
-      
+
       Consola->save("Dificultad: " + targetPrefixValue);
-      Consola->save("Obteniendo respuesta del servidor:");
-      Consola->save(payload.c_str());
+      Consola->save("Obteniendo respuesta del servidor...");
 
       // Realizar la minería localmente y obtener el proof de trabajo
       unsigned long nonce = 0;
@@ -98,18 +104,18 @@ void mining() {
       {
         String combinedData = payload + String(nonce);
         String hash = calcularPruebaDeTrabajo(combinedData);
+        
 
         if (hash.startsWith(targetPrefixValue))
         {
+          digitalWrite(LED_BUILTIN, HIGH); 
           Consola->save("Prueba de trabajo encontrada!");
-          Consola->save("Hash: ");
-          Consola->save(hash.c_str());
-          Consola->save("Nonce: ");
           Consola->save(String(nonce).c_str());
 
           // Enviar el proof de trabajo al servidor
           if (enviarProofDeTrabajo(combinedData, nonce))
           {
+
             Consola->save("Proof de trabajo enviado con éxito.");
           }
           else
@@ -123,7 +129,6 @@ void mining() {
         nonce++;
 
         delay(10);
-        
       }
     }else if (httpResponseCode == -1) {
       Consola->save("Error en la solicitud HTTPS. Código de error: ");
