@@ -23,17 +23,22 @@
 #include <ESP8266HTTPClient.h>
 #include <bearssl/bearssl.h>
 #include <ArduinoJson.h>
+#include <AdafruitIO_WiFi.h>
+
+#define IO_USERNAME  "digovil"
+#define IO_KEY       "aio_nxaJ11oHZ8pTILgvuzyUfeG3xmua"
 
 const char *ssid = "Claro_01919C";
 const char *password = "P5K8H2P3B2A2";
 const char *serverAddress = "digovil.pythonanywhere.com"; // Reemplaza con la dirección de tu servidor
 const char *miner_address = "17bSSrgFKdn7uKa9L2TcvHbW5CwmqwvwjW";
 
-// const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
 
 // Obtener transacciones pendientes del servidor
 WiFiClientSecure client;
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, ssid, password);
+AdafruitIO_Feed *Consola = io.feed("consola");
 
 void setup()
 {
@@ -57,8 +62,17 @@ void setup()
 
 void loop()
 {
+    mining();
+    delay(10);
+}
+
+void mining() {
+
+
   
     HTTPClient http;
+    io.run();
+
     String url = "https://" + String(serverAddress) + "/transactions/get"; // Cambia a HTTPS
     http.begin(client, url);
     int httpResponseCode = http.GET();
@@ -68,14 +82,15 @@ void loop()
       
       String payload = http.getString();
       String targetPrefixValue;
+      http.end();
 
       // Obtener y eliminar targetPrefix del JSON
       cutTargetPrefix(payload, targetPrefixValue);
-
-      Serial.println("Dificultad: " + targetPrefixValue);
-      Serial.println("Obteniendo respuesta del servidor:");
-      Serial.println(payload);
       
+      Consola->save("Dificultad: " + targetPrefixValue);
+      Consola->save("Obteniendo respuesta del servidor:");
+      Consola->save(payload.c_str());
+
       // Realizar la minería localmente y obtener el proof de trabajo
       unsigned long nonce = 0;
 
@@ -86,20 +101,20 @@ void loop()
 
         if (hash.startsWith(targetPrefixValue))
         {
-          Serial.println("Prueba de trabajo encontrada!");
-          Serial.print("Hash: ");
-          Serial.println(hash);
-          Serial.print("Nonce: ");
-          Serial.println(nonce);
+          Consola->save("Prueba de trabajo encontrada!");
+          Consola->save("Hash: ");
+          Consola->save(hash.c_str());
+          Consola->save("Nonce: ");
+          Consola->save(String(nonce).c_str());
 
           // Enviar el proof de trabajo al servidor
           if (enviarProofDeTrabajo(combinedData, nonce))
           {
-            Serial.println("Proof de trabajo enviado con éxito.");
+            Consola->save("Proof de trabajo enviado con éxito.");
           }
           else
           {
-            Serial.println("Error al enviar el proof de trabajo.");
+            Consola->save("Error al enviar el proof de trabajo.");
           }
 
           break;
@@ -107,19 +122,17 @@ void loop()
 
         nonce++;
 
-        // Introducir un pequeño retraso para permitir que el sistema atienda otras tareas
-        delay(1);
+        delay(10);
+        
       }
-    }
-    else
-    {
-      Serial.print("Error al obtener transacciones. Código de respuesta: ");
+    }else if (httpResponseCode == -1) {
+      Consola->save("Error en la solicitud HTTPS. Código de error: ");
+      Serial.println(http.errorToString(httpResponseCode).c_str());
+    }else {
+      Consola->save("Error al obtener transacciones. Código de respuesta: ");
       Serial.println(httpResponseCode);
     }
 
-    http.end();
-
-    delay(5000); // Espera 5 segundos antes de comenzar una nueva prueba de trabajo
 }
 
 void cutTargetPrefix(String &payload, String &targetPrefix) {
@@ -186,12 +199,12 @@ bool enviarProofDeTrabajo(String combinedData, unsigned long nonce)
   if (httpResponseCode == 200)
   {
     String payload = http.getString();
-    Serial.println("Respuesta del servidor:");
-    Serial.println(payload);
+    Consola->save("Respuesta del servidor:");
+    Consola->save(payload.c_str());
     return true;
   } else if (httpResponseCode == -1) {
-    Serial.print("Error en la solicitud HTTPS. Código de error: ");
-    Serial.println(http.errorToString(httpResponseCode).c_str());
+    Consola->save("Error en la solicitud HTTPS. Código de error: ");
+    Consola->save(http.errorToString(httpResponseCode).c_str());
     return false; // Agregar este retorno
 
   }else
