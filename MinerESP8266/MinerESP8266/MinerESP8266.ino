@@ -1,3 +1,24 @@
+/*
+
+   _____             _ _ _                   _____      _       
+  / ____|           (_|_|_)                 / ____|    (_)      
+ | |  __ _   _  __ _ _ _ _ _ __ __ _ ______| |     ___  _ _ __  
+ | | |_ | | | |/ _` | | | | '__/ _` |______| |    / _ \| | '_ \ 
+ | |__| | |_| | (_| | | | | | | (_| |      | |___| (_) | | | | |
+  \_____|\__,_|\__,_| |_|_|_|  \__,_|       \_____\___/|_|_| |_|
+                   _/ |                                         
+                  |__/                                          
+  Official code for ESP8266 boards                   version 1.0
+
+  Guajira-Coin Team & Community 2023-2024 © MIT Licensed
+  https://www.guajiracoin.online/
+  https://github.com/Digovil/guajiracoin
+
+  Si no sabe por dónde empezar, visite el sitio web oficial y navegue hasta
+  la página de introducción. ¡Diviértete minando!
+*/
+
+
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <bearssl/bearssl.h>
@@ -11,7 +32,7 @@ const char *miner_address = "17bSSrgFKdn7uKa9L2TcvHbW5CwmqwvwjW";
 // const char *targetPrefix = "0000"; // Requiere 4 ceros iniciales en el hash
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
 
-  // Obtener transacciones pendientes del servidor
+// Obtener transacciones pendientes del servidor
 WiFiClientSecure client;
 
 void setup()
