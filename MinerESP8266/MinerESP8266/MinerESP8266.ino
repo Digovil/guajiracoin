@@ -25,20 +25,20 @@
 #include <ArduinoJson.h>
 #include <AdafruitIO_WiFi.h>
 
-#define IO_USERNAME  "digovil"
-#define IO_KEY       "aio_svtD07vNqbVR5D5vijrT6pfxSggB"
+#define IO_USERNAME  "io_username"
+#define IO_KEY       "io_key"
 
-const char *ssid = "Claro_01919C";
-const char *password = "P5K8H2P3B2A2";
+const char *ssid = "ssid";
+const char *password = "password";
 const char *serverAddress = "digovil.pythonanywhere.com"; // Reemplaza con la dirección de tu servidor
-const char *miner_address = "17bSSrgFKdn7uKa9L2TcvHbW5CwmqwvwjW";
+const char *miner_address = "direccion_billetera";
 
 const int SHA1_HASH_SIZE = 20;     // Longitud del hash SHA-1 en bytes
 
 // Obtener transacciones pendientes del servidor
 WiFiClientSecure client;
 AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, ssid, password);
-AdafruitIO_Feed *Consola = io.feed("consola");
+AdafruitIO_Feed *Consola = io.feed("name_feed");
 
 
 void setup()
@@ -110,7 +110,6 @@ void mining() {
         {
           digitalWrite(LED_BUILTIN, HIGH); 
           Consola->save("Prueba de trabajo encontrada!");
-          Consola->save(String(nonce).c_str());
 
           // Enviar el proof de trabajo al servidor
           if (enviarProofDeTrabajo(combinedData, nonce))
