@@ -1,7 +1,3 @@
-<!--
-*** Official Guajira Coin
-*** digovil, 2023-Present
--->
 
 
 <h1>
