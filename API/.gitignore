@@ -1,6 +1,4 @@
 .venv/
 .env
-blockchain.json
-nodes.json
-mempool.json
+
 core/__pycache__/
