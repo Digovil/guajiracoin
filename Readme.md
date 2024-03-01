@@ -102,7 +102,7 @@ Some included third-party files may have different licenses - please check their
 
 ## Active Project Maintainers
 
-*   [@Digovil](https://github.com/Digovil/) - dgonzalezv@uniguajira.edu.co (Developer, project founder)
+*   Dilan Gonzalez Vidal - dgonzalezv@uniguajira.edu.co (Developer, project founder)
 *   Luz Moronta Iguaran - lmoronta@uniguajira.edu.co (Developer, project co-founder)
 
 <hr>
